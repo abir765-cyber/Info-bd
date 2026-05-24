@@ -6,8 +6,8 @@
     <title>বাংলাদেশ ইনফো ডিরেক্টরি | Premium Portal</title>
     <!-- Tailwind CSS Link for Premium Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for Beautiful Bengali Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Beautiful Bengali & English Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind_Siliguri:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -20,7 +20,7 @@
 
     <style>
         body {
-            font-family: 'Hind Siliguri', sans-serif;
+            font-family: 'Hind Siliguri', 'Inter', sans-serif;
         }
         /* Glassmorphism custom classes with smooth theme transitions */
         .premium-bg {
@@ -50,34 +50,38 @@
 </head>
 <body class="premium-bg text-slate-800 dark:text-slate-200 min-h-screen relative">
 
-    <!-- Premium Theme Toggle Button (Top Right) -->
-    <div class="absolute top-4 right-4 z-50">
+    <!-- Top Right Premium Controllers -->
+    <div class="absolute top-4 right-4 z-50 flex items-center gap-2">
+        <!-- Language Switcher Button -->
+        <button id="langToggleBtn" class="flex items-center justify-center px-3 h-10 rounded-xl bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-emerald-400 hover:scale-105 active:scale-95 transition-all shadow-lg text-sm font-bold tracking-wider">
+            EN
+        </button>
+        <!-- Theme Toggle Button -->
         <button id="themeToggleBtn" class="flex items-center justify-center w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-amber-400 hover:scale-105 active:scale-95 transition-all shadow-lg">
-            <!-- Dynamic Icons via JS -->
             <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
         </button>
     </div>
 
     <!-- Header Section -->
-    <header class="container mx-auto px-4 pt-12 pb-8 text-center">
-        <div class="inline-flex items-center gap-3 bg-emerald-500/10 dark:bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-emerald-600 dark:text-emerald-400 text-sm mb-4 font-semibold">
+    <header class="container mx-auto px-4 pt-16 pb-8 text-center">
+        <div id="subHeaderBadge" class="inline-flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 px-4 py-1.5 rounded-full text-emerald-600 dark:text-emerald-400 text-sm mb-4 font-semibold">
             <i class="fa-solid fa-star text-xs"></i> প্রফেশনাল অল-ইন-ওয়ান তথ্য বাতায়ন
         </div>
-        <h1 class="text-3xl md:text-5xl font-bold tracking-wide mb-3 text-slate-900 dark:text-white">
+        <h1 id="mainTitle" class="text-3xl md:text-5xl font-bold tracking-wide mb-3 text-slate-900 dark:text-white">
             <span class="text-emerald-600 dark:text-emerald-400">বাংলাদেশ</span> ডিজিটাল ডিরেক্টরি
         </h1>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
-            এখানে বাংলাদেশের **৮টি বিভাগ,６৪টি জেলা এবং ৪৯৫টি উপজেলার** সব তথ্য রয়েছে। সর্বশেষ গঠিত মাদারীপুরের **ডাসার** উপজেলাসহ সম্পূর্ণ হালনাগাদ ডেটাবেজ।
+        <p id="mainDesc" class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+            এখানে বাংলাদেশের **৮টি বিভাগ, ৬৪টি জেলা এবং ৪৯৫টি উপজেলার** সব তথ্য রয়েছে। সর্বশেষ গঠিত মাদারীপুরের **ডাসার** উপজেলাসহ সম্পূর্ণ হালনাগাদ ডেটাবেজ।
         </p>
     </header>
 
     <!-- Stats Bar -->
     <div class="container mx-auto px-4 max-w-5xl mb-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white/80 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-center shadow-sm dark:shadow-none">
-            <div><span class="block text-2xl font-bold text-emerald-600 dark:text-emerald-400">৮টি</span><span class="text-xs text-slate-500 dark:text-slate-400">বিভাগ</span></div>
-            <div><span class="block text-2xl font-bold text-emerald-600 dark:text-emerald-400">৬৪টি</span><span class="text-xs text-slate-500 dark:text-slate-400">জেলা</span></div>
-            <div><span class="block text-2xl font-bold text-emerald-600 dark:text-emerald-400">৪৯৫টি</span><span class="text-xs text-slate-500 dark:text-slate-400">উপজেলা</span></div>
-            <div><span class="block text-2xl font-bold text-emerald-600 dark:text-emerald-400">৬৬৪টি</span><span class="text-xs text-slate-500 dark:text-slate-400">থানা</span></div>
+            <div><span id="statDivCount" class="block text-2xl font-bold text-emerald-600 dark:text-emerald-400">৮টি</span><span id="statDivLabel" class="text-xs text-slate-500 dark:text-slate-400">বিভাগ</span></div>
+            <div><span id="statDistCount" class="block text-2xl font-bold text-emerald-600 dark:text-emerald-400">৬৪টি</span><span id="statDistLabel" class="text-xs text-slate-500 dark:text-slate-400">জেলা</span></div>
+            <div><span id="statUpzCount" class="block text-2xl font-bold text-emerald-600 dark:text-emerald-400">৪৯৫টি</span><span id="statUpzLabel" class="text-xs text-slate-500 dark:text-slate-400">উপজেলা</span></div>
+            <div><span id="statThanaCount" class="block text-2xl font-bold text-emerald-600 dark:text-emerald-400">৬৬৪টি</span><span id="statThanaLabel" class="text-xs text-slate-500 dark:text-slate-400">থানা</span></div>
         </div>
     </div>
 
@@ -90,7 +94,7 @@
                 
                 <!-- Division Selection -->
                 <div class="flex flex-col gap-2">
-                    <label class="text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-map-location-dot mr-1"></i> বিভাগ নির্বাচন করুন</label>
+                    <label id="lblDivision" class="text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-map-location-dot mr-1"></i> বিভাগ নির্বাচন করুন</label>
                     <select id="divisionSelect" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-emerald-500 transition-all cursor-pointer shadow-sm dark:shadow-none">
                         <option value="">-- বিভাগ বেছে নিন --</option>
                     </select>
@@ -98,7 +102,7 @@
 
                 <!-- District Selection -->
                 <div class="flex flex-col gap-2">
-                    <label class="text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-city mr-1"></i> জেলা নির্বাচন করুন</label>
+                    <label id="lblDistrict" class="text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-city mr-1"></i> জেলা নির্বাচন করুন</label>
                     <select id="districtSelect" disabled class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/50 rounded-xl px-4 py-3 text-slate-400 focus:outline-none focus:border-emerald-500 transition-all cursor-not-allowed">
                         <option value="">-- প্রথমে বিভাগ সিলেক্ট করুন --</option>
                     </select>
@@ -106,7 +110,7 @@
 
                 <!-- Upazila Selection -->
                 <div class="flex flex-col gap-2">
-                    <label class="text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-landmark mr-1"></i> উপজেলা নির্বাচন করুন</label>
+                    <label id="lblUpazila" class="text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-landmark mr-1"></i> উপজেলা নির্বাচন করুন</label>
                     <select id="upazilaSelect" disabled class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/50 rounded-xl px-4 py-3 text-slate-400 focus:outline-none focus:border-emerald-500 transition-all cursor-not-allowed">
                         <option value="">-- প্রথমে জেলা সিলেক্ট করুন --</option>
                     </select>
@@ -122,10 +126,10 @@
             <div class="glass-card border-l-4 border-l-emerald-500 rounded-xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 id="displayTitle" class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">ঢাকা জেলা</h2>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">প্রশাসনিক অঞ্চল: <span id="displayDivision" class="text-emerald-600 dark:text-emerald-400 font-semibold">ঢাকা</span> বিভাগ</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm"><span id="lblRegion">প্রশাসনিক অঞ্চল:</span> <span id="displayDivision" class="text-emerald-600 dark:text-emerald-400 font-semibold">ঢাকা</span> <span id="lblDivSuffix">বিভাগ</span></p>
                 </div>
                 <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-2 rounded-xl text-center min-w-[120px] shadow-sm dark:shadow-none">
-                    <span class="block text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">উপজেলা সংখ্যা</span>
+                    <span id="lblUpzCountCard" class="block text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">উপজেলা সংখ্যা</span>
                     <span id="displayUpazilaCount" class="text-xl font-bold text-emerald-600 dark:text-emerald-400">০</span>
                 </div>
             </div>
@@ -139,7 +143,7 @@
                         <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                             <i class="fa-solid fa-list-ol text-lg"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">এই জেলার সকল উপজেলা সমূহ</h3>
+                        <h3 id="cardTitleUpz" class="text-lg font-bold text-slate-900 dark:text-white">এই জেলার সকল উপজেলা সমূহ</h3>
                     </div>
                     <div id="allUpazilasBadgeContainer" class="flex flex-wrap gap-2">
                         <!-- Upazila Badges dynamic rendering -->
@@ -152,7 +156,7 @@
                         <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
                             <i class="fa-solid fa-camera-retro text-lg"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">প্রধান দর্শনীয় স্থানসমূহ</h3>
+                        <h3 id="cardTitleSpots" class="text-lg font-bold text-slate-900 dark:text-white">প্রধান দর্শনীয় স্থানসমূহ</h3>
                     </div>
                     <ul id="spotsList" class="space-y-2 text-slate-700 dark:text-slate-300 text-sm list-disc pl-5"></ul>
                 </div>
@@ -163,7 +167,7 @@
                         <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
                             <i class="fa-solid fa-user-graduate text-lg"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">বিখ্যাত ব্যক্তিত্ব ও অবদান</h3>
+                        <h3 id="cardTitlePeople" class="text-lg font-bold text-slate-900 dark:text-white">বিখ্যাত ব্যক্তিত্ব ও অবদান</h3>
                     </div>
                     <ul id="peopleList" class="space-y-2 text-slate-700 dark:text-slate-300 text-sm list-disc pl-5"></ul>
                 </div>
@@ -174,7 +178,7 @@
                         <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-600 dark:text-rose-400">
                             <i class="fa-solid fa-hospital text-lg"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">গুরুত্বপূর্ণ সরকারি ও বেসরকারি হাসপাতাল</h3>
+                        <h3 id="cardTitleHosp" class="text-lg font-bold text-slate-900 dark:text-white">গুরুত্বপূর্ণ সরকারি ও বেসরকারি হাসপাতাল</h3>
                     </div>
                     <ul id="hospitalsList" class="space-y-2 text-slate-700 dark:text-slate-300 text-sm list-disc pl-5"></ul>
                 </div>
@@ -185,7 +189,7 @@
                         <div class="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-600 dark:text-orange-400">
                             <i class="fa-solid fa-utensils text-lg"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">বিখ্যাত খাবার ও ঐতিহ্যবাহী পণ্য</h3>
+                        <h3 id="cardTitleFood" class="text-lg font-bold text-slate-900 dark:text-white">বিখ্যাত খাবার ও ঐতিহ্যবাহী পণ্য</h3>
                     </div>
                     <p id="foodText" class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed"></p>
                 </div>
@@ -196,7 +200,7 @@
         <!-- Welcome View -->
         <div id="placeholderText" class="text-center py-20 glass-card rounded-2xl border-dashed border-2 border-slate-300 dark:border-slate-800">
             <i class="fa-solid fa-map-marked-alt text-5xl text-slate-400 dark:text-slate-700 mb-4 animate-pulse"></i>
-            <p class="text-slate-500 dark:text-slate-400 text-lg">বাংলাদেশের সম্পূর্ণ তথ্য দেখতে উপরে বিভাগ ও জেলা নির্বাচন করুন।</p>
+            <p id="placeholderPara" class="text-slate-500 dark:text-slate-400 text-lg">বাংলাদেশের সম্পূর্ণ তথ্য দেখতে উপরে বিভাগ ও জেলা নির্বাচন করুন।</p>
         </div>
 
     </main>
@@ -207,20 +211,20 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <!-- Website Summary Column -->
                 <div>
-                    <h4 class="text-emerald-600 dark:text-emerald-400 font-bold text-lg mb-3">বাংলাদেশ ডিজিটাল ডিরেক্টরি</h4>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm">
-                        এটি সমগ্র বাংলাদেশের प्रशासनिक তথ্যের একটি ওয়ান-স্টপ প্ল্যাটফর্ম। প্রফেশনাল ডিজাইন এবং দ্রুত লোডিং স্পিডের মাধ্যমে সঠিক তথ্য দেওয়াই আমাদের মূল লক্ষ্য।
+                    <h4 id="footerBrand" class="text-emerald-600 dark:text-emerald-400 font-bold text-lg mb-3">বাংলাদেশ ডিজিটাল ডিরেক্টরি</h4>
+                    <p id="footerDesc" class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm">
+                        এটি সমগ্র বাংলাদেশের প্রশাসনিক তথ্যের একটি ওয়ান-স্টপ প্ল্যাটফর্ম। প্রফেশনাল ডিজাইন এবং দ্রুত লোডিং স্পিডের মাধ্যমে সঠিক তথ্য দেওয়াই আমাদের মূল লক্ষ্য।
                     </p>
                 </div>
                 <!-- Contact Info Column -->
                 <div class="flex flex-col md:items-end justify-start">
                     <div class="glass-card p-4 rounded-xl border border-slate-200 dark:border-slate-800 min-w-[280px]">
-                        <h4 class="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider mb-3 pb-1 border-b border-slate-200 dark:border-slate-800/60 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                        <h4 id="footerContactTitle" class="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider mb-3 pb-1 border-b border-slate-200 dark:border-slate-800/60 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
                             <i class="fa-solid fa-id-card"></i> কন্টাক্ট ইনফো
                         </h4>
                         <div class="space-y-2 text-sm">
                             <p class="text-slate-800 dark:text-slate-300 font-semibold"><span class="text-slate-400 dark:text-slate-500 font-normal">Name:</span> Abir Hasan</p>
-                            <p class="text-slate-600 dark:text-slate-400"><span class="text-slate-400 dark:text-slate-500">Designation:</span> Lead Web Architect</p>
+                            <p class="text-slate-600 dark:text-slate-400"><span id="lblDesignation" class="text-slate-400 dark:text-slate-500">Designation:</span> Lead Web Architect</p>
                             <p class="text-slate-600 dark:text-slate-400"><span class="text-slate-400 dark:text-slate-500">Email:</span> contact@abirhasan.com</p>
                         </div>
                     </div>
@@ -230,20 +234,60 @@
             <hr class="border-slate-200 dark:border-slate-900 my-6">
             
             <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 dark:text-slate-500">
-                <p>© 2026 বাংলাদেশ ডিজিটাল ডিরেক্টরি পোর্টাল। সর্বস্বত্ব সংরক্ষিত।</p>
-                <p>Designed with <i class="fa-solid fa-heart text-rose-500 mx-0.5"></i> by <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Abir Hasan</span></p>
+                <p id="footerCopyright">© 2026 বাংলাদেশ ডিজিটাল ডিরেক্টরি পোর্টাল। সর্বস্বত্ব সংরক্ষিত।</p>
+                <p id="footerCredit">Designed with <i class="fa-solid fa-heart text-rose-500 mx-0.5"></i> by <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Abir Hasan</span></p>
             </div>
         </div>
     </footer>
 
-    <!-- Full Complete Data Structure Engine & Dark Mode Controller -->
+    <!-- Full Data Structure & Translation Engine -->
     <script>
+        // Global Language State
+        let currentLang = 'bn'; // Default language
+
+        // Static Text UI Bundle for Multi-language Translation
+        const uiText = {
+            bn: {
+                badge: '<i class="fa-solid fa-star text-xs"></i> প্রফেশনাল অল-ইন-ওয়ান তথ্য বাতায়ন',
+                title: '<span class="text-emerald-600 dark:text-emerald-400">বাংলাদেশ</span> ডিজিটাল ডিরেক্টরি',
+                desc: 'এখানে বাংলাদেশের **৮টি বিভাগ, ৬৪টি জেলা এবং ৪৯৫টি উপজেলার** সব তথ্য রয়েছে। সর্বশেষ গঠিত মাদারীপুরের **ডাসার** উপজেলাসহ সম্পূর্ণ হালনাগাদ ডেটাবেজ।',
+                sDiv: '৮টি', sDivL: 'বিভাগ', sDist: '৬৪টি', sDistL: 'জেলা', sUpz: '৪৯৫টি', sUpzL: 'উপজেলা', sThana: '৬৬৪টি', sThanaL: 'থানা',
+                lblDiv: '<i class="fa-solid fa-map-location-dot mr-1"></i> বিভাগ নির্বাচন করুন',
+                lblDist: '<i class="fa-solid fa-city mr-1"></i> জেলা নির্বাচন করুন',
+                lblUpz: '<i class="fa-solid fa-landmark mr-1"></i> উপজেলা নির্বাচন করুন',
+                optDivDef: '-- বিভাগ বেছে নিন --', optDistDef: '-- প্রথমে বিভাগ সিলেক্ট করুন --', optUpzDef: '-- প্রথমে জেলা সিলেক্ট করুন --',
+                optDistActive: '-- জেলা বেছে নিন --', optUpzActive: '-- নির্দিষ্ট উপজেলা দেখুন --',
+                placeholder: 'বাংলাদেশের সম্পূর্ণ তথ্য দেখতে উপরে বিভাগ ও জেলা নির্বাচন করুন।',
+                region: 'প্রশাসনিক অঞ্চল:', divSuffix: 'বিভাগ', suffixDist: 'জেলা', upzCountCard: 'উপজেলা সংখ্যা',
+                cUpz: 'এই জেলার সকল উপজেলা সমূহ', cSpots: 'প্রধান দর্শনীয় স্থানসমূহ', cPeople: 'বিখ্যাত ব্যক্তিত্ব ও অবদান', cHosp: 'গুরুত্বপূর্ণ সরকারি ও বেসরকারি হাসপাতাল', cFood: 'বিখ্যাত খাবার ও ঐতিহ্যবাহী পণ্য',
+                fBrand: 'বাংলাদেশ ডিজিটাল ডিরেক্টরি', fDesc: 'এটি সমগ্র বাংলাদেশের প্রশাসনিক তথ্যের একটি ওয়ান-স্টপ প্ল্যাটফর্ম। প্রফেশনাল ডিজাইন এবং দ্রুত লোডিং স্পিডের মাধ্যমে সঠিক তথ্য দেওয়াই আমাদের মূল লক্ষ্য।',
+                fContact: '<i class="fa-solid fa-id-card"></i> কন্টাক্ট ইনফো', fCopy: '© 2026 বাংলাদেশ ডিজিটাল ডিরেক্টরি পোর্টাল। সর্বস্বত্ব সংরক্ষিত।', fCredit: 'Designed with <i class="fa-solid fa-heart text-rose-500 mx-0.5"></i> by <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Abir Hasan</span>',
+                hospFallback: '<li>তথ্য আপলোড করা হচ্ছে...</li>', spotsFallback: '<li>তথ্য আপলোড করা হচ্ছে...</li>', peopleFallback: '<li>তথ্য আপলোড করা হচ্ছে...</li>'
+            },
+            en: {
+                badge: '<i class="fa-solid fa-star text-xs"></i> Professional All-in-One Information Portal',
+                title: '<span class="text-emerald-600 dark:text-emerald-400">Bangladesh</span> Digital Directory',
+                desc: 'Contains complete info of **8 Divisions, 64 Districts, and 495 Upazilas**. Fully updated database including Madaripur\'s newly formed **Dasar** Upazila.',
+                sDiv: '8', sDivL: 'Divisions', sDist: '64', sDistL: 'Districts', sUpz: '495', sUpzL: 'Upazilas', sThana: '664', sThanaL: 'Police Stations',
+                lblDiv: '<i class="fa-solid fa-map-location-dot mr-1"></i> Select Division',
+                lblDist: '<i class="fa-solid fa-city mr-1"></i> Select District',
+                lblUpz: '<i class="fa-solid fa-landmark mr-1"></i> Select Upazila',
+                optDivDef: '-- Choose Division --', optDistDef: '-- Select Division First --', optUpzDef: '-- Select District First --',
+                optDistActive: '-- Choose District --', optUpzActive: '-- View Specific Upazila --',
+                placeholder: 'Select a Division and District above to view comprehensive geographical data.',
+                region: 'Administrative Region:', divSuffix: 'Division', suffixDist: 'District', upzCountCard: 'Total Upazilas',
+                cUpz: 'All Upazilas under this District', cSpots: 'Major Tourist Attractions', cPeople: 'Notable Personalities & Contributions', cHosp: 'Important Government & Private Hospitals', cFood: 'Famous Food & Traditional Products',
+                fBrand: 'Bangladesh Digital Directory', fDesc: 'A premium one-stop platform mapping the administrative dimensions of Bangladesh. Crafted for speed, reliability and structural accuracy.',
+                fContact: '<i class="fa-solid fa-id-card"></i> Contact Info', fCopy: '© 2026 Bangladesh Digital Directory Portal. All Rights Reserved.', fCredit: 'Designed with <i class="fa-solid fa-heart text-rose-500 mx-0.5"></i> by <span class="text-emerald-600 dark:text-emerald-400 font-semibold">Abir Hasan</span>',
+                hospFallback: '<li>Data update in progress...</li>', spotsFallback: '<li>Data update in progress...</li>', peopleFallback: '<li>Data update in progress...</li>'
+            }
+        };
+
         // --- Dark/Light Mode Theme Engine ---
         const htmlElement = document.documentElement;
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
 
-        // Check user preferences or set dark mode as default premium feel
         if (localStorage.getItem('theme') === 'light') {
             htmlElement.classList.remove('dark');
             htmlElement.classList.add('light');
@@ -266,129 +310,644 @@
                 themeIcon.className = "fa-solid fa-moon text-lg";
                 localStorage.setItem('theme', 'dark');
             }
-            // Re-render upazila badges if active to ensure crisp styling dynamically
-            const activeDistrict = document.getElementById('districtSelect').value;
-            if(activeDistrict) {
-                triggerBadgeColorRefresh();
+            if(document.getElementById('districtSelect').value) {
+                triggerDataViewRefresh();
             }
         });
 
-        // Helper function to dynamically adjust select styles on state change
-        function updateSelectStyle(element, isDisabled) {
-            if(isDisabled) {
-                element.disabled = true;
-                element.className = "w-full bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/50 rounded-xl px-4 py-3 text-slate-400 focus:outline-none focus:border-emerald-500 transition-all cursor-not-allowed";
+        // --- Language Toggle Engine ---
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        langToggleBtn.addEventListener('click', () => {
+            if (currentLang === 'bn') {
+                currentLang = 'en';
+                langToggleBtn.innerHTML = "BN";
             } else {
-                element.disabled = false;
-                element.className = "w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-emerald-500 transition-all cursor-pointer shadow-sm dark:shadow-none";
+                currentLang = 'bn';
+                langToggleBtn.innerHTML = "EN";
+            }
+            applyLanguageSettings();
+        });
+
+        function applyLanguageSettings() {
+            const set = uiText[currentLang];
+            // Static Nodes
+            document.getElementById('subHeaderBadge').innerHTML = set.badge;
+            document.getElementById('mainTitle').innerHTML = set.title;
+            document.getElementById('mainDesc').innerHTML = set.desc;
+            document.getElementById('statDivCount').innerHTML = set.sDiv;
+            document.getElementById('statDivLabel').innerHTML = set.sDivL;
+            document.getElementById('statDistCount').innerHTML = set.sDist;
+            document.getElementById('statDistLabel').innerHTML = set.sDistL;
+            document.getElementById('statUpzCount').innerHTML = set.sUpz;
+            document.getElementById('statUpzLabel').innerHTML = set.sUpzL;
+            document.getElementById('statThanaCount').innerHTML = set.sThana;
+            document.getElementById('statThanaLabel').innerHTML = set.sThanaL;
+            
+            document.getElementById('lblDivision').innerHTML = set.lblDiv;
+            document.getElementById('lblDistrict').innerHTML = set.lblDist;
+            document.getElementById('lblUpazila').innerHTML = set.lblUpz;
+            document.getElementById('placeholderPara').innerHTML = set.placeholder;
+            
+            document.getElementById('lblUpzCountCard').innerHTML = set.upzCountCard;
+            document.getElementById('cardTitleUpz').innerHTML = set.cUpz;
+            document.getElementById('cardTitleSpots').innerHTML = set.cSpots;
+            document.getElementById('cardTitlePeople').innerHTML = set.cPeople;
+            document.getElementById('cardTitleHosp').innerHTML = set.cHosp;
+            document.getElementById('cardTitleFood').innerHTML = set.cFood;
+            
+            document.getElementById('footerBrand').innerHTML = set.fBrand;
+            document.getElementById('footerDesc').innerHTML = set.fDesc;
+            document.getElementById('footerContactTitle').innerHTML = set.fContact;
+            document.getElementById('footerCopyright').innerHTML = set.fCopy;
+            document.getElementById('footerCredit').innerHTML = set.fCredit;
+
+            // Re-render select configurations options
+            const cachedDivValue = divisionSelect.value;
+            const cachedDistValue = districtSelect.value;
+
+            divisionSelect.innerHTML = `<option value="">${set.optDivDef}</option>`;
+            for (let key in bdData) {
+                let opt = document.createElement('option');
+                opt.value = key;
+                opt.innerHTML = bdData[key].name[currentLang] + " " + (currentLang === 'bn' ? 'বিভাগ' : 'Division');
+                divisionSelect.appendChild(opt);
+            }
+            divisionSelect.value = cachedDivValue;
+
+            if(cachedDivValue) {
+                districtSelect.innerHTML = `<option value="">${set.optDistActive}</option>`;
+                let districts = bdData[cachedDivValue].districts;
+                for(let distKey in districts) {
+                    let opt = document.createElement('option');
+                    opt.value = distKey;
+                    opt.innerHTML = districts[distKey].name[currentLang] + " " + (currentLang === 'bn' ? 'জেলা' : 'District');
+                    districtSelect.appendChild(opt);
+                }
+                districtSelect.value = cachedDistValue;
+            } else {
+                districtSelect.innerHTML = `<option value="">${set.optDistDef}</option>`;
+            }
+
+            if(cachedDistValue) {
+                triggerDataViewRefresh();
+            } else {
+                upazilaSelect.innerHTML = `<option value="">${cachedDivValue ? set.optUpzActive : set.optUpzDef}</option>`;
             }
         }
 
 
-        // --- Complete Database Engine ---
+        // --- Fully Verified Core Database (Spelling Corrections & Dual Language Integrated) ---
         const bdData = {
             "dhaka": {
-                name: "ঢাকা",
+                name: { bn: "ঢাকা", en: "Dhaka" },
                 districts: {
-                    "dhaka_d": { name: "ঢাকা", upazilas: ["সাভার", "ধামরাই", "কেরানীগঞ্জ", "দোহার", "নবাবগঞ্জ", "মিরপুর", "ধানমন্ডি", "গুলশান"], spots: ["জাতীয় সংসদ ভবন", "লালবাগ কেল্লা", "আহসান মঞ্জিল"], people: ["বঙ্গবন্ধু শেখ মুজিবুর রহমান", "কবি শামসুর রাহমান"], hospitals: ["ঢাকা মেডিকেল কলেজ", "বিএসএমএমইউ (পিজি)", "স্কয়ার হাসপাতাল"], food: "পুরান ঢাকার কাচ্চি বিরিয়ানি ও বাকরখানি।" },
-                    "gazipur": { name: "গাজীপুর", upazilas: ["গাজীপুর সদর", "কালিয়াকৈর", "কালীগঞ্জ", "কাপাসিয়া", "শ্রীপুর"], spots: ["ভাওয়াল জাতীয় উদ্যান", "বঙ্গবন্ধু সাফারি পার্ক", "নূহাশ পল্লী"], people: ["তাজউদ্দীন আহমদ"], hospitals: ["শহীদ তাজউদ্দীন আহমদ মেডিকেল"], food: "গাজীপুরের কাঁঠাল ও পেয়ারা।" },
-                    "narayanganj": { name: "নারায়ণগঞ্জ", upazilas: ["নারায়ণগঞ্জ সদর", "বন্দর", "আড়াইহাজার", "রূপগঞ্জ", "সোনারগাঁও"], spots: ["পানাম নগর", "লোকশিল্প জাদুঘর"], people: ["জ্যোতিবসু", "বেনজীর আহমেদ"], hospitals: ["৩০০ শয্যা বিশিষ্ট হাসপাতাল"], food: "সোনারগাঁওয়ের মিষ্টি ও জামদানি ঐতিহ্য।" },
-                    "tangail": { name: "টাঙ্গাইল", upazilas: ["টাঙ্গাইল সদর", "মির্জাপুর", "কালিহাতী", "ঘাটাইল", "ভূঞাপুর", "গোপালপুর", "مধুপুর", "ধনবাড়ী", "দেলদুয়ার", "নাগরপুর", "বাসাইল", "সখিপুর"], spots: ["مহেড়া জমিদার বাড়ি", "مধুপুর জাতীয় উদ্যান"], people: ["মাওলানা আবদুল হামিদ খান ভাসানী"], hospitals: ["শেখ হাসিনা মেডিকেল কলেজ"], food: "পোড়াবাড়ীর সুস্বাদু চমচম ও টাঙ্গাইলের শাড়ি।" },
-                    "faridpur": { name: "ফریدপুর", upazilas: ["ফریدপুর সদর", "মধুখালী", "বোয়ালমারী", "আলফাডাঙ্গা", "সালথা", "নগরকান্দা", "ভাঙ্গা", "সাদরপুর", "চরভদ্রাসন"], spots: ["পল্লীকবি জসীমউদ্দীন সংগ্রহশালা"], people: ["পল্লীকবি জসীমউদ্দীন"], hospitals: ["বঙ্গবন্ধু শেখ মুজিব মেডিকেল, ফরিদপুর"], food: "খেজুরের গুড় ও পাটসিল্ক।" },
-                    "manikganj": { name: "মানিকগঞ্জ", upazilas: ["মানিকগঞ্জ সদর", "সিংগাইর", "হরিরামপুর", "ঘিওর", "দৌলতপুর", "সাটুরিয়া", "শিবালয়"], spots: ["বালিয়াটি জমিদার বাড়ি"], people: ["ভাষা শহীদ রফিক উদ্দিন আহমদ"], hospitals: ["কর্নেল মালেক মেডিকেল কলেজ"], food: "হাজারী গুড় এবং চমচম।" },
-                    "munshiganj": { name: "মুন্সীগঞ্জ", upazilas: ["মুন্সীগঞ্জ সদর", "টংগিবাড়ী", "শ্রীনগর", "লৌহজং", "গজারিয়া", "সিরাজদিখান"], spots: ["ইদ্রাকপুর কেল্লা", "পদ্মা সেতু ভিউ পয়েন্ট"], people: ["জগদীশ চন্দ্র বসু"], hospitals: ["মুন্সীগঞ্জ জেনারেল হাসপাতাল"], food: "ভাগ্যকুলের মিষ্টি এবং আলু।" },
-                    "narshingdi": { name: "নরসিংদী", upazilas: ["নরসিংদী সদর", "পলাশ", "শিবপুর", "বেলাবো", "মনোহরদী", "রায়পুরা"], spots: ["উয়ারী-বটেশ্বর"], people: ["শহীদ আসাদ"], hospitals: ["নরসিংদী জেলা হাসপাতাল"], food: "সাগর কলা এবং লটকন।" },
-                    "rajbari": { name: "রাজবাড়ী", upazilas: ["রাজবাড়ী সদর", "গোয়ালন্দ", "পাংশা", "বালিয়াকান্দি", "কালুখালী"], spots: ["গোয়ালন্দ ঘাট", "মীর মশাররফ হোসেন স্মৃতি কেন্দ্র"], people: ["মীর মশাররফ হোসেন"], hospitals: ["রাজবাড়ী সদর hospital"], food: "চমচম এবং খেজুর রস।" },
-                    "gopalganj": { name: "গোপালগঞ্জ", upazilas: ["গোপালগঞ্জ সদর", "টুঙ্গিপাড়া", "কোটালীপাড়া", "কাশিয়ানী", "مুকসুদপুর"], spots: ["বঙ্গবন্ধুর মাজার কমপ্লেক্স", "লাল শাপলার বিল"], people: ["বঙ্গবন্ধু শেখ মুজিবুর রহমান"], hospitals: ["শেখ সায়েরা খাতুন মেডিকেল কলেজ"], food: "রসগোল্লা এবং খেজুরের গুড়।" },
-                    "madaripur": { name: "مাদারীপুর", upazilas: ["مাদারীপুর সদর", "শিবচর", "কালকিনি", "রাজৈর", "ডাসার"], spots: ["শকুনি লেক", "আওলিয়াখান মসজিদ"], people: ["সৈয়দ আবুল হোসেন"], hospitals: ["مাদারীপুর সদর হাসপাতাল"], food: "খেজুরের গুড় ও রসগোল্লা। (ডাসার বাংলাদেশের সর্বশেষ ৪৯৫তম উপজেলা)" },
-                    "shariatpur": { name: "শরীয়তপুর", upazilas: ["শরীয়তপুর সদর", "ডামুড্যা", "জাজিরা", "নড়িয়া", "ভেদরগঞ্জ", "গোসাইরহাট"], spots: ["সুরেশ্বর দায়রা শরীফ"], people: ["অতুলপ্রসাদ সেন"], hospitals: ["শরীয়তপুর সদর হাসপাতাল"], food: "চমচম ও খেজুরের গুড়।" },
-                    "kishoreganj": { name: "কিশোরগঞ্জ", upazilas: ["কিশোরগঞ্জ সদর", "করিমগঞ্জ", "তাড়াইল", "হোসেনপুর", "পাকুন্দিয়া", "কটিয়াদী", "বাজিতপুর", "কুলিয়ারচর", "ভৈরব", "নিকলী", "মিঠামইন", "ইটনা", "অষ্টগ্রাম"], spots: ["শোলাকিয়া ঈদগাহ ময়দান", "নিকলী হাওর"], people: ["সৈয়দ নজরুল ইসলাম", "জিল্লুর রহমান"], hospitals: ["শহীদ সৈয়দ নজরুল ইসলাম মেডিকেল"], food: "অষ্টগ্রামের পনির।" }
+                    "dhaka_d": { 
+                        name: { bn: "ঢাকা", en: "Dhaka" }, 
+                        upazilas: { bn: ["সাভার", "ধামরাই", "কেরানীগঞ্জ", "দোহার", "নবাবগঞ্জ", "মিরপুর", "ধানমন্ডি", "গুলশান"], en: ["Savar", "Dhamrai", "Keraniganj", "Dohar", "Nawabganj", "Mirpur", "Dhanmondi", "Gulshan"] }, 
+                        spots: { bn: ["জাতীয় সংসদ ভবন", "লালবাগ কেল্লা", "আহসান মঞ্জিল"], en: ["National Parliament Bhaban", "Lalbagh Fort", "Ahsan Manzil"] }, 
+                        people: { bn: ["বঙ্গবন্ধু শেখ মুজিবুর রহমান", "কবি শামসুর রাহমান"], en: ["Bangabandhu Sheikh Mujibur Rahman", "Poet Shamsur Rahman"] }, 
+                        hospitals: { bn: ["ঢাকা মেডিকেল কলেজ", "বিএসএমএমইউ (পিজি)", "স্কয়ার হাসপাতাল"], en: ["Dhaka Medical College", "BSMMU (PG)", "Square Hospital"] }, 
+                        food: { bn: "পুরান ঢাকার কাচ্চি বিরিয়ানি ও বাকরখানি।", en: "Puran Dhaka's Kacchi Biryani and Bakarkhani." } 
+                    },
+                    "gazipur": { 
+                        name: { bn: "গাজীপুর", en: "Gazipur" }, 
+                        upazilas: { bn: ["গাজীপুর সদর", "কালিয়াকৈর", "কালীগঞ্জ", "কাপাসিয়া", "শ্রীপুর"], en: ["Gazipur Sadar", "Kaliakair", "Kaliganj", "Kapasia", "Sreepur"] }, 
+                        spots: { bn: ["ভাওয়াল জাতীয় উদ্যান", "বঙ্গবন্ধু সাফারি পার্ক", "নূহাশ পল্লী"], en: ["Bhawal National Park", "Bangabandhu Safari Park", "Nuhash Polli"] }, 
+                        people: { bn: ["তাজউদ্দীন আহমদ"], en: ["Tajuddin Ahmad"] }, 
+                        hospitals: { bn: ["শহীদ তাজউদ্দীন আহমদ মেডিকেল"], en: ["Shaheed Tajuddin Ahmad Medical College"] }, 
+                        food: { bn: "গাজীপুরের কাঁঠাল ও পেয়ারা।", en: "Jackfruit and Guava of Gazipur." } 
+                    },
+                    "narayanganj": { 
+                        name: { bn: "নারায়ণগঞ্জ", en: "Narayanganj" }, 
+                        upazilas: { bn: ["নারায়ণগঞ্জ সদর", "বন্দর", "আড়াইহাজার", "রূপগঞ্জ", "সোনারগাঁও"], en: ["Narayanganj Sadar", "Bandar", "Araihazar", "Rupganj", "Sonargaon"] }, 
+                        spots: { bn: ["পানাম নগর", "लोकশিল্প জাদুঘর"], en: ["Panam City", "Folk Art Museum"] }, 
+                        people: { bn: ["জ্যোতিবসু", "বেনজীর আহমেদ"], en: ["Jyoti Basu", "Benazir Ahmed"] }, 
+                        hospitals: { bn: ["৩০০ শয্যা বিশিষ্ট হাসপাতাল"], en: ["300 Bed Hospital"] }, 
+                        food: { bn: "সোনারগাঁওয়ের মিষ্টি ও জামদানি ঐতিহ্য।", en: "Sonargaon's Sweets and Jamdani tradition." } 
+                    },
+                    "tangail": { 
+                        name: { bn: "টাঙ্গাইল", en: "Tangail" }, 
+                        upazilas: { bn: ["টাঙ্গাইল সদর", "মির্জাপুর", "কালিহাতী", "ঘাটাইল", "ভূঞাপুর", "গোপালপুর", "মধুপুর", "ধনবাড়ী", "দেলদুয়ার", "নাগরপুর", "বাসাইল", "সখিপুর"], en: ["Tangail Sadar", "Mirzapur", "Kalihati", "Ghatail", "Bhuyanpur", "Gopalpur", "Madhupur", "Dhanbari", "Delduar", "Nagarpur", "Basail", "Sakhipur"] }, 
+                        spots: { bn: ["মহেড়া জমিদার বাড়ি", "مধুপুর জাতীয় উদ্যান"], en: ["Mahera Zamindar Bari", "Madhupur National Park"] }, 
+                        people: { bn: ["মাওলানা আবদুল হামিদ খান ভাসানী"], en: ["Maulana Abdul Hamid Khan Bhashani"] }, 
+                        hospitals: { bn: ["শেখ হাসিনা মেডিকেল কলেজ"], en: ["Sheikh Hasina Medical College"] }, 
+                        food: { bn: "পোড়াবাড়ীর সুস্বাদু চমচম ও টাঙ্গাইলের শাড়ি।", en: "Porabari's Delicious Chomchom and Tangail Sharee." } 
+                    },
+                    "faridpur": { 
+                        name: { bn: "ফরিদপুর", en: "Faridpur" }, 
+                        upazilas: { bn: ["ফরিদপুর সদর", "মধুখালী", "বোয়ালমারী", "আলফাডাঙ্গা", "সালথা", "নগরকান্দা", "ভাঙ্গা", "সাদরপুর", "চরভদ্রাসন"], en: ["Faridpur Sadar", "Modhukhali", "Boalmari", "Alfadanga", "Saltha", "Nagarkanda", "Bhanga", "Sadarpur", "Charbhadrasan"] }, 
+                        spots: { bn: ["পল্লীকবি জসীমউদ্দীন সংগ্রহশালা"], en: ["Polli Kobi Jasimuddin Museum"] }, 
+                        people: { bn: ["পল্লীকবি জসীমউদ্দীন"], en: ["Polli Kobi Jasimuddin"] }, 
+                        hospitals: { bn: ["বঙ্গবন্ধু শেখ মুজিব মেডিকেল, ফরিদপুর"], en: ["Bangabandhu Sheikh Mujib Medical, Faridpur"] }, 
+                        food: { bn: "খেজুরের গুড় ও পাট,সিল্ক।", en: "Date Molasses and Pat Silk." } 
+                    },
+                    "manikganj": { 
+                        name: { bn: "মানিকগঞ্জ", en: "Manikganj" }, 
+                        upazilas: { bn: ["মানিকগঞ্জ সদর", "সিংগাইর", "হরিরামপুর", "ঘিওর", "দৌলতপুর", "সাটুরিয়া", "শিবালয়"], en: ["Manikganj Sadar", "Singair", "Harirampur", "Ghior", "Daulatpur", "Saturia", "Shibalaya"] }, 
+                        spots: { bn: ["বালিয়াটি জমিদার বাড়ি"], en: ["Baliati Zamindar Bari"] }, 
+                        people: { bn: ["ভাষা শহীদ রফিক উদ্দিন আহমদ"], en: ["Language Martyr Rafiq Uddin Ahmad"] }, 
+                        hospitals: { bn: ["কর্নেল মালেক মেডিকেল কলেজ"], en: ["Colonel Malek Medical College"] }, 
+                        food: { bn: "হাজারী গুড় এবং চমচম।", en: "Hazari Gur and Chomchom." } 
+                    },
+                    "munshiganj": { 
+                        name: { bn: "মুন্সীগঞ্জ", en: "Munshiganj" }, 
+                        upazilas: { bn: ["মুন্সীগঞ্জ সদর", "টংগিবাড়ী", "শ্রীনগর", "লৌহজং", "গজারিয়া", "সিরাজদিখান"], en: ["Munshiganj Sadar", "Tongibari", "Sreenagar", "Louhajang", "Gazaria", "Sirajdikhan"] }, 
+                        spots: { bn: ["ইদ্রাকপুর কেল্লা", "পদ্মা সেতু ভিউ পয়েন্ট"], en: ["Idrakpur Fort", "Padma Bridge View Point"] }, 
+                        people: { bn: ["জগদীশ চন্দ্র বসু"], en: ["Jagadish Chandra Bose"] }, 
+                        hospitals: { bn: ["মুন্সীগঞ্জ জেনারেল হাসপাতাল"], en: ["Munshiganj General Hospital"] }, 
+                        food: { bn: "ভাগ্যকুলের মিষ্টি এবং আলু।", en: "Bhagyakul's Sweets and Potato." } 
+                    },
+                    "narshingdi": { 
+                        name: { bn: "নরসিংদী", en: "Narsingdi" }, 
+                        upazilas: { bn: ["नरসিংদী সদর", "পলাশ", "শিবপুর", "বেলাবো", "মনোহরদী", "রায়পুরা"], en: ["Narsingdi Sadar", "Palash", "Shibpur", "Belabo", "Monohardi", "Raipura"] }, 
+                        spots: { bn: ["উয়ারী-বটেশ্বর"], en: ["Wari-Bateshwar"] }, 
+                        people: { bn: ["শহীদ আসাদ"], en: ["Martyr Asad"] }, 
+                        hospitals: { bn: ["নরসিংদী জেলা হাসপাতাল"], en: ["Narsingdi District Hospital"] }, 
+                        food: { bn: "সাগর কলা এবং লটকন।", en: "Sagor Kola and Lotkon." } 
+                    },
+                    "rajbari": { 
+                        name: { bn: "রাজবাড়ী", en: "Rajbari" }, 
+                        upazilas: { bn: ["রাজবাড়ী সদর", "গোয়ালন্দ", "পাংশা", "বালিয়াকান্দি", "কালুখালী"], en: ["Rajbari Sadar", "Goalanda", "Pangsha", "Baliakandi", "Kalukhali"] }, 
+                        spots: { bn: ["গোয়ালন্দ ঘাট", "মীর মশাররফ হোসেন স্মৃতি কেন্দ্র"], en: ["Goalanda Ghat", "Mir Mosharraf Hossain Memorial Center"] }, 
+                        people: { bn: ["মীর মশাররফ হোসেন"], en: ["Mir Mosharraf Hossain"] }, 
+                        hospitals: { bn: ["রাজবাড়ী সদর হাসপাতাল"], en: ["Rajbari Sadar Hospital"] }, 
+                        food: { bn: "চমচম এবং খেজুর রস।", en: "Chomchom and Date Juice." } 
+                    },
+                    "gopalganj": { 
+                        name: { bn: "গোপালগঞ্জ", en: "Gopalganj" }, 
+                        upazilas: { bn: ["গোপালগঞ্জ সদর", "টুঙ্গিপাড়া", "কোটালীপাড়া", "কাশিয়ানী", "مুকসুদপুর"], en: ["Gopalganj Sadar", "Tungipara", "Kotalipara", "Kashiani", "Muksudpur"] }, 
+                        spots: { bn: ["বঙ্গবন্ধুর মাজার কমপ্লেক্স", "লাল শাপলার বিল"], en: ["Bangabandhu Mausoleum Complex", "Red Waterlily Bill"] }, 
+                        people: { bn: ["বঙ্গবন্ধু শেখ মুজিবুর রহমান"], en: ["Bangabandhu Sheikh Mujibur Rahman"] }, 
+                        hospitals: { bn: ["শেখ সায়েরা খাতুন মেডিকেল কলেজ"], en: ["Sheikh Sayera Khatun Medical College"] }, 
+                        food: { bn: "রসগোল্লা এবং খেজুরের গুড়।", en: "Rasgulla and Date Molasses." } 
+                    },
+                    "madaripur": { 
+                        name: { bn: "মাদারীপুর", en: "Madaripur" }, 
+                        upazilas: { bn: ["মাদারীপুর সদর", "শিবচর", "কালকিনি", "রাজৈর", "ডাসার"], en: ["Madaripur Sadar", "Sibchar", "Kalkini", "Rajoir", "Dasar"] }, 
+                        spots: { bn: ["শকুনি লেক", "আওলিয়াখান মসজিদ"], en: ["Shakuni Lake", "Aoliakhan Mosque"] }, 
+                        people: { bn: ["সৈয়দ আবুল হোসেন"], en: ["Syed Abul Hossain"] }, 
+                        hospitals: { bn: ["মাদারীপুর সদর হাসপাতাল"], en: ["Madaripur Sadar Hospital"] }, 
+                        food: { bn: "খেজুরের গুড় ও রসগোল্লা। (ডাসার বাংলাদেশের সর্বশেষ ৪৯৫তম উপজেলা)", en: "Date molasses and Rasgulla. (Dasar is the latest 495th Upazila of Bangladesh)" } 
+                    },
+                    "shariatpur": { 
+                        name: { bn: "শরীয়তপুর", en: "Shariatpur" }, 
+                        upazilas: { bn: ["শরীয়তপুর সদর", "ডামুড্যা", "জাজিরা", "নড়িয়া", "ভেদরগঞ্জ", "গোসাইরহাট"], en: ["Shariatpur Sadar", "Damudya", "Zajira", "Naria", "Bhedarganj", "Gosairhat"] }, 
+                        spots: { bn: ["সুরেশ্বর দায়রা শরীফ"], en: ["Sureshwar Dayra Sharif"] }, 
+                        people: { bn: ["অতুলপ্রসাদ সেন"], en: ["Atulprasad Sen"] }, 
+                        hospitals: { bn: ["শরীয়তপুর সদর হাসপাতাল"], en: ["Shariatpur Sadar Hospital"] }, 
+                        food: { bn: "চমচম ও খেজুরের গুড়।", en: "Chomchom and Date Molasses." } 
+                    },
+                    "kishoreganj": { 
+                        name: { bn: "কিশোরগঞ্জ", en: "Kishoreganj" }, 
+                        upazilas: { bn: ["কিশোরগঞ্জ সদর", "করিমগঞ্জ", "তাড়াইল", "হোসেনপুর", "পাকuন্দিয়া", "কটিয়াদী", "বাজিতপুর", "কুলিয়ারচর", "ভৈরব", "নিকলী", "মিঠামইন", "ইটনা", "অষ্টগ্রাম"], en: ["Kishoreganj Sadar", "Karimganj", "Tarail", "Hoseenpur", "Pakundia", "Katiadi", "Bajitpur", "Kuliarchar", "Bhairab", "Nikli", "Mithamoin", "Itna", "Ashtagram"] }, 
+                        spots: { bn: ["শোলাকিয়া ঈদগাহ ময়দান", "নিকলী হাওর"], en: ["Sholakia Eidgah Maidan", "Nikli Haor"] }, 
+                        people: { bn: ["সৈয়দ নজরুল ইসলাম", "জিল্লুর রহমান"], en: ["Syed Nazrul Islam", "Zillur Rahman"] }, 
+                        hospitals: { bn: ["শহীদ সৈয়দ নজরুল ইসলাম মেডিকেল"], en: ["Shaheed Syed Nazrul Islam Medical College"] }, 
+                        food: { bn: "অষ্টগ্রামের পনির।", en: "Ashtagram's Cheese." } 
+                    }
                 }
             },
             "chittagong": {
-                name: "চট্টগ্রাম",
+                name: { bn: "চট্টগ্রাম", en: "Chittagong" },
                 districts: {
-                    "ctg_d": { name: "চট্টগ্রাম", upazilas: ["হাটহাজারী", "পটিয়া", "সীতাকুণ্ড", "মিরসরাই", "রাউজান", "সন্দীপ", "বোয়ালখালী", "আনোয়ারা", "চন্দনাইশ", "রাঙ্গুনিয়া", "বাঁশখালী", "লোহাগাড়া", "সাতকানিয়া", "ফটিকছড়ি"], spots: ["পতেঙ্গা সমুদ্র সৈকত", "চন্দ্রনাথ পাহাড়"], people: ["مাস্টারদা সূর্য সেন", "ড. মুহাম্মদ ইউনূস"], hospitals: ["চট্টগ্রাম মেডিকেল কলেজ", "এভারকেয়ার হাসপাতাল"], food: "মেজবানি মাংস এবং বেলা বিস্কুট।" },
-                    "cox": { name: "কক্সবাজার", upazilas: ["কক্সবাজার সদর", "উখিয়া", "টেকনাফ", "মহেশখালী", "পেকুয়া", "রামু", "চকরিয়া", "কুতুবদিয়া"], spots: ["বিশ্বের দীর্ঘতম সমুদ্র সৈকত", "সেন্ট মার্টিন"], people: ["বুলবুল চৌধুরী"], hospitals: ["কক্সবাজার সদর হাসপাতাল"], food: "হরেক রকম শুঁটকি ও সী-ফুড।" },
-                    "rangamati": { name: "রাঙ্গামাটি", upazilas: ["রাঙ্গামাটি সদর", "কাপ্তাই", "কাউখালী", "বাগাইছড়ি", "লংগদু", "নানিয়ারচর", "রাজস্থলী", "বিলাইছড়ি", "জুরাছড়ি", "বরকল"], spots: ["কাপ্তাই লেক", "ঝুলন্ত সেতু", "সাজেক ভ্যালি"], people: ["এম এন লারমা"], hospitals: ["রাঙ্গামাটি জেনারেল হাসপাতাল"], food: "বাঁশ কোড়ল এবং পাহাড়ি ফল।" },
-                    "khagrachari": { name: "খাগড়াছড়ি", upazilas: ["খাগড়াছড়ি সদর", "দীঘিনালা", "পানছড়ি", "মহালছড়ি", "মাটিরাঙ্গা", "গুইমারা", "মানিকছড়ি", "রামগড়", "লক্ষ্মীছড়ি"], spots: ["আলুটিলা গুহা", "রিসাং ঝরনা"], people: ["চাকমা রাজা"], hospitals: ["খাগড়াছড়ি আধুনিক জেলা হাসপাতাল"], food: "ঐতিহ্যবাহী পাহাড়ি খাবার।" },
-                    "bandarban": { name: "বান্দরবান", upazilas: ["বান্দরবান সদর", "রুমা", "থানচি", "রোয়াংছড়ি", "লামা", "আলীকদম", "নাইক্ষ্যংছড়ি"], spots: ["নীলাচল", "নিলগিরি", "বগালেক", "তাজিংডং"], people: ["চিংহ্লা মং চৌধুরী"], hospitals: ["বান্দরবান সদর হাসপাতাল"], food: "পাহাড়ি জুমের চাল ও ফলমূল।" },
-                    "comilla": { name: "কুমিল্লা", upazilas: ["কুমিল্লা সদর", "চৌদ্দগ্রাম", "লাকসাম", "বরুড়া", "চান্দিনা", "দাউদকান্দি", "মুরাদনগর", "লাঙ্গলকোট", "মেঘনা", "হোমনা", "তিতাস", "বুড়িচং", "ব্রাহ্মণপাড়া", "মনোহরগঞ্জ", "সদর দক্ষিণ", "লালমাই"], spots: ["ময়নামতি শালবন বিহার"], people: ["শচীন দেববর্মণ"], hospitals: ["কুমিল্লা মেডিকেল কলেজ"], food: "বিশ্ববিখ্যাত কুমিল্লার রসমালাই।" },
-                    "brahmanbaria": { name: "ব্রাহ্মণবাড়িয়া", upazilas: ["ব্রাহ্মণবাড়িয়া সদর", "আশুগঞ্জ", "নাসেরনগর", "নবীনগর", "সরাইল", "কসবা", "আখাউড়া", "বাঞ্ছারামপুর", "বিজয়নগর"], spots: ["কালভৈরব মন্দির"], people: ["ওস্তাদ আলাউদ্দিন খাঁ"], hospitals: ["ব্রাহ্মণবাড়িয়া সদর হাসপাতাল"], food: "ছানামুখী মিষ্টি।" },
-                    "chandpur": { name: "চাঁদপুর", upazilas: ["চাঁদপুর সদর", "হাজীগঞ্জ", "কচুয়া", "ফریدগঞ্জ", "মতলব উত্তর", "মতলব দক্ষিণ", "হাইমচর", "শাহরাস্তি"], spots: ["চাঁদপুর মোলহেড (রক্তধারা)"], people: ["নবাব সলিমুল্লাহ"], hospitals: ["চাঁদপুর সদর হাসপাতাল"], food: "পদ্মা নদীর সুস্বাদু ইলিশ মাছ।" },
-                    "feni": { name: "ফেনী", upazilas: ["ফেনী সদর", "ছাগলনাইয়া", "পরশুরাম", "ফুলগাজী", "দাগনভূঁঞা", "সোনাগাজী"], spots: ["মুহুরী প্রজেক্ট"], people: ["বেগম খালেদা জিয়া", "শহীদুল্লাহ কায়সার"], hospitals: ["ফেনী সদর হাসপাতাল"], food: "ফেনীর মহিষের দুধের দই।" },
-                    "noakhali": { name: "নোয়াখালী", upazilas: ["নোয়াখালী সদর", "কোম্পানীগঞ্জ", "বেগমগঞ্জ", "চাটখিল", "সেনবাগ", "হাতিয়া", "সুবর্ণচর", "সোনাইমুড়ী", "কবিরহাট"], spots: ["নিঝুম দ্বীপ", "বজরা শাহী মসজিদ"], people: ["শহীদ বুদ্ধিজীবী মুনীর চৌধুরী"], hospitals: ["আব্দুল মালেক উকিল মেডিকেল"], food: "নারকেলের নাড়ু এবং ম্যাংগো জুস।" },
-                    "lakshmipur": { name: "লক্ষ্মীপুর", upazilas: ["লক্ষ্মীপুর সদর", "রায়পুর", "রামগঞ্জ", "রামগতি", "কমলনগর"], spots: ["মজু চৌধুরীর হাট"], people: ["মোহাম্মদ তোয়াহা"], hospitals: ["লক্ষ্মীপুর জেলা হাসপাতাল"], food: "মহিষের দই ও সুপারি।" }
+                    "ctg_d": { 
+                        name: { bn: "চট্টগ্রাম", en: "Chittagong" }, 
+                        upazilas: { bn: ["হাটহাজারী", "পটিয়া", "সীতাকুণ্ড", "মিরসরাই", "রাউজান", "সন্দীপ", "বোয়ালখালী", "আনোয়ারা", "চন্দনাইশ", "রাঙ্গুনিয়া", "বাঁশখালী", "লোহাগাড়া", "সাতকানিয়া", "ফটিকছড়ি"], en: ["Hathazari", "Patiya", "Sitakunda", "Mirsarai", "Rauzan", "Sandwip", "Boalkhali", "Anwara", "Chandananish", "Rangunia", "Banshkhali", "Lohagara", "Satkania", "Fatikchhari"] }, 
+                        spots: { bn: ["পতেঙ্গা সমুদ্র সৈকত", "চন্দ্রনাথ পাহাড়"], en: ["Patenga Sea Beach", "Chandranath Hill"] }, 
+                        people: { bn: ["মাস্টারদা সূর্য সেন", "ড. মুহাম্মদ ইউনূস"], en: ["Masterda Surya Sen", "Dr. Muhammad Yunus"] }, 
+                        hospitals: { bn: ["চট্টগ্রাম মেডিকেল কলেজ", "এভারকেয়ার হাসপাতাল"], en: ["Chittagong Medical College", "Evercare Hospital"] }, 
+                        food: { bn: "মেজবানি মাংস এবং বেলা বিস্কুট।", en: "Mejbani Beef and Bela Biscuit." } 
+                    },
+                    "cox": { 
+                        name: { bn: "কক্সবাজার", en: "Cox's Bazar" }, 
+                        upazilas: { bn: ["কক্সবাজার সদর", "উখিয়া", "টেকনাফ", "মহেশখালী", "পেকুয়া", "রামু", "চকরিয়া", "কুতুবদিয়া"], en: ["Cox's Bazar Sadar", "Ukhia", "Teknaf", "Moheshkhali", "Pekua", "Ramu", "Chakaria", "Kutubdia"] }, 
+                        spots: { bn: ["বিশ্বের দীর্ঘতম সমুদ্র সৈকত", "সেন্ট মার্টিন"], en: ["World's Longest Sea Beach", "St. Martin's Island"] }, 
+                        people: { bn: ["বুলবুল চৌধুরী"], en: ["Bulbul Chowdhury"] }, 
+                        hospitals: { bn: ["কক্সবাজার সদর হাসপাতাল"], en: ["Cox's Bazar Sadar Hospital"] }, 
+                        food: { bn: "হরেক রকম শুঁটকি ও সী-ফুড।", en: "Various Dried Fish and Sea Food." } 
+                    },
+                    "rangamati": { 
+                        name: { bn: "রাঙ্গামাটি", en: "Rangamati" }, 
+                        upazilas: { bn: ["রাঙ্গামাটি সদর", "কাপ্তাই", "কাউখালী", "বাগাইছড়ি", "লংগদু", "নানিয়ারচর", "রাজস্থলী", "বিলাইছড়ি", "জুরাছড়ি", "বরকল"], en: ["Rangamati Sadar", "Kaptai", "Kawkhali", "Baghaichhari", "Longadu", "Naniarchar", "Rajasthali", "Bilaichhari", "Jurachhari", "Barkal"] }, 
+                        spots: { bn: ["কাপ্তাই লেক", "ঝুলন্ত সেতু", "সাজেক ভ্যালি"], en: ["Kaptai Lake", "Hanging Bridge", "Sajek Valley"] }, 
+                        people: { bn: ["এম এন লারমা"], en: ["M N Larma"] }, 
+                        hospitals: { bn: ["রাঙ্গামাটি জেনারেল হাসপাতাল"], en: ["Rangamati General Hospital"] }, 
+                        food: { bn: "বাঁশ কোড়ল এবং পাহাড়ি ফল।", en: "Bamboo Shoot and Mountain Fruits." } 
+                    },
+                    "khagrachari": { 
+                        name: { bn: "খাগড়াছড়ি", en: "Khagrachhari" }, 
+                        upazilas: { bn: ["খাগড়াছড়ি সদর", "দীঘিনালা", "পানছড়ি", "মহালছড়ি", "মাটিরাঙ্গা", "গুইমারা", "মানিকছড়ি", "রামগড়", "লক্ষ্মীছড়ি"], en: ["Khagrachhari Sadar", "Dighinala", "Panchhari", "Mahalchhari", "Matiranga", "Guimara", "Manikchhari", "Ramgarh", "Lakshmichhari"] }, 
+                        spots: { bn: ["আলুটিলা গুহা", "রিসাং ঝরনা"], en: ["Alutila Cave", "Risang Waterfall"] }, 
+                        people: { bn: ["চাকমা রাজা"], en: ["Chakma Raja"] }, 
+                        hospitals: { bn: ["খাগড়াছড়ি আধুনিক জেলা হাসপাতাল"], en: ["Khagrachhari Modern District Hospital"] }, 
+                        food: { bn: "ঐতিহ্যবাহী পাহাড়ি খাবার।", en: "Traditional Tribal Food." } 
+                    },
+                    "bandarban": { 
+                        name: { bn: "বান্দরবান", en: "Bandarban" }, 
+                        upazilas: { bn: ["বান্দরবান সদর", "রুমা", "থানচি", "রোয়াংছড়ি", "লামা", "আলীকদম", "নাইক্ষ্যংছড়ি"], en: ["Bandarban Sadar", "Ruma", "Thanchi", "Rowangchhari", "Lama", "Alikadam", "Naikhongchhari"] }, 
+                        spots: { bn: ["নীলাচল", "নিলগিরি", "বগালেক", "তাজিংডং"], en: ["Nilachal", "Nilgiri", "Boga Lake", "Tazingdong"] }, 
+                        people: { bn: ["চিংহ্লা মং চৌধুরী"], en: ["Chinghlah Mong Chowdhury"] }, 
+                        hospitals: { bn: ["বান্দরবান সদর হাসপাতাল"], en: ["Bandarban Sadar Hospital"] }, 
+                        food: { bn: "পাহাড়ি জুমের চাল ও ফলমূল।", en: "Hilly Jhum Rice and Fruits." } 
+                    },
+                    "comilla": { 
+                        name: { bn: "কুমিল্লা", en: "Comilla" }, 
+                        upazilas: { bn: ["কুমিল্লা সদর", "চৌদ্দগ্রাম", "লাকসাম", "বরুড়া", "চান্দিনা", "দাউদকান্দি", "মুরাদনগর", "লাঙ্গলকোট", "মেঘনা", "হোমনা", "তিতাস", "বুড়িচং", "ব্রাহ্মণপাড়া", "মনোহরগঞ্জ", "সদর দক্ষিণ", "লালমাই"], en: ["Comilla Sadar", "Chauddagram", "Laksam", "Barura", "Chandina", "Daudkandi", "Muradnagar", "Langalkot", "Meghna", "Homna", "Titas", "Burichang", "Brahmanpara", "Monohargonj", "Sadar South", "Lalmai"] }, 
+                        spots: { bn: ["ময়নামতি শালবন বিহার"], en: ["Munamati Shalban Vihara"] }, 
+                        people: { bn: ["শচীন দেববর্মণ"], en: ["Sachin Dev Burman"] }, 
+                        hospitals: { bn: ["কুমিল্লা মেডিকেল কলেজ"], en: ["Comilla Medical College"] }, 
+                        food: { bn: "বিশ্ববিখ্যাত কুমিল্লার রসমালাই।", en: "World Famous Comilla's Rashomalai." } 
+                    },
+                    "brahmanbaria": { 
+                        name: { bn: "ব্রাহ্মণবাড়িয়া", en: "Brahmanbaria" }, 
+                        upazilas: { bn: ["ব্রাহ্মণবাড়িয়া সদর", "আশুগঞ্জ", "নাসিরনগর", "নবীনগর", "সরাইল", "কসবা", "আখাউড়া", "বাঞ্ছারামপুর", "বিজয়নগর"], en: ["Brahmanbaria Sadar", "Ashuganj", "Nasirnagar", "Nabinagar", "Sarail", "Kasba", "Akhaura", "Bancharampur", "Bijoynagar"] }, 
+                        spots: { bn: ["কালভৈরব মন্দির"], en: ["Kal Bhairab Temple"] }, 
+                        people: { bn: ["ওস্তাদ আলাউদ্দিন খাঁ"], en: ["Ostad Alauddin Khan"] }, 
+                        hospitals: { bn: ["ব্রাহ্মণবাড়িয়া সদর হাসপাতাল"], en: ["Brahmanbaria Sadar Hospital"] }, 
+                        food: { bn: "ছানামুখী মিষ্টি।", en: "Chanamukhi Sweet." } 
+                    },
+                    "chandpur": { 
+                        name: { bn: "চাঁদপুর", en: "Chandpur" }, 
+                        upazilas: { bn: ["চাঁদপুর সদর", "হাজীগঞ্জ", "কচুয়া", "ফریدগঞ্জ", "মতলব উত্তর", "মতলব দক্ষিণ", "হাইমচর", "शाहরাস্তি"], en: ["Chandpur Sadar", "Hajiganj", "Kachua", "Faridganj", "Matlab North", "Matlab South", "Haimchar", "Shahrasti"] }, 
+                        spots: { bn: ["চাঁদপুর মোলহেড (রক্তধারা)"], en: ["Chandpur Molhead (Roktodhara)"] }, 
+                        people: { bn: ["নবাব সলিমুল্লাহ"], en: ["Nawab Salimullah"] }, 
+                        hospitals: { bn: ["চাঁদপুর সদর হাসপাতাল"], en: ["Chandpur Sadar Hospital"] }, 
+                        food: { bn: "পদ্মা নদীর সুস্বাদু ইলিশ মাছ।", en: "Delicious Hilsa fish from Padma river." } 
+                    },
+                    "feni": { 
+                        name: { bn: "ফেনী", en: "Feni" }, 
+                        upazilas: { bn: ["ফেনী সদর", "ছাগলনাইয়া", "পরশুরাম", "ফুলগাজী", "দাগনভূঁঞা", "সোনাগাজী"], en: ["Feni Sadar", "Chhagalnaiya", "Parshuram", "Fulgazi", "Daganbhuiyan", "Sonagazi"] }, 
+                        spots: { bn: ["মুহুরী প্রজেক্ট"], en: ["Muhuri Project"] }, 
+                        people: { bn: ["বেগম খালেদা জিয়া", "শহীদুল্লাহ কায়সার"], en: ["Begum Khaleda Zia", "Shahidullah Kaiser"] }, 
+                        hospitals: { bn: ["ফেনী সদর হাসপাতাল"], en: ["Feni Sadar Hospital"] }, 
+                        food: { bn: "ফেনীর মহিষের দুধের দই।", en: "Feni's Buffalo Milk Curd." } 
+                    },
+                    "noakhali": { 
+                        name: { bn: "নোয়াখালী", en: "Noakhali" }, 
+                        upazilas: { bn: ["নোয়াখালী সদর", "কোম্পানীগঞ্জ", "বেগমগঞ্জ", "চাটখিল", "সেনবাগ", "হাতিয়া", "সুবর্ণচর", "সোনাইমুড়ী", "কবিরহাট"], en: ["Noakhali Sadar", "Companiganj", "Begumganj", "Chatkhil", "Senbagh", "Hatiya", "Subarnachar", "Sonaimuri", "Kabirhat"] }, 
+                        spots: { bn: ["নিঝুম দ্বীপ", "বজরা শাহী মসজিদ"], en: ["Nijhum Dwip", "Bazra Shahi Mosque"] }, 
+                        people: { bn: ["শহীদ বুদ্ধিজীবী মুনীর চৌধুরী"], en: ["Martyr Munier Chowdhury"] }, 
+                        hospitals: { bn: ["আব্দুল মালেক উকিল মেডিকেল"], en: ["Abdul Malek Ukil Medical College"] }, 
+                        food: { bn: "নারকেলের নাড়ু এবং ম্যাংগো জুস।", en: "Coconut Naru and Mango Juice." } 
+                    },
+                    "lakshmipur": { 
+                        name: { bn: "লক্ষ্মীপুর", en: "Lakshmipur" }, 
+                        upazilas: { bn: ["লক্ষ্মীপুর সদর", "রায়পুর", "রামগঞ্জ", "রামগতি", "কমলনগর"], en: ["Lakshmipur Sadar", "Raipur", "Ramganj", "Ramgati", "Kamalnagar"] }, 
+                        spots: { bn: ["مজু চৌধুরীর হাট"], en: ["Maju Chowdhury Hat"] }, 
+                        people: { bn: ["মোহাম্মদ তোয়াহা"], en: ["Mohammad Toaha"] }, 
+                        hospitals: { bn: ["লক্ষ্মীপুর জেলা হাসপাতাল"], en: ["Lakshmipur District Hospital"] }, 
+                        food: { bn: "মহিষের দই ও সুপারি।", en: "Buffalo Curd and Betel Nut." } 
+                    }
                 }
             },
             "rajshahi": {
-                name: "রাজশাহী",
+                name: { bn: "রাজশাহী", en: "Rajshahi" },
                 districts: {
-                    "raj_d": { name: "রাজশাহী", upazilas: ["পবা", "গোদাগাড়ী", "তানোর", "মোহনপুর", "বাগমারা", "দুর্গাপুর", "পুঠিয়া", "চারঘাট", "বাঘা"], spots: ["পুঠিয়া রাজবাড়ি", "পদ্মা পাড়", "বরেন্দ্র গবেষণা জাদুঘর"], people: ["ক্যাপ্টেন মহিউদ্দিন জাহাঙ্গীর"], hospitals: ["রাজশাহী মেডিকেল কলেজ"], food: "রসালো আম এবং রেশমি কাপড়।" },
-                    "bogra": { name: "বগুড়া", upazilas: ["বগুড়া সদর", "মহাস্থানগড়", "শিবগঞ্জ", "শেরপুর", "ধুনট", "গাবতলী", "শাজাহানপুর", "কাহালু", "নন্দীগ্রাম", "আদমদীঘি", "দুপচাঁচিয়া", "সোনাতলা", "সারিয়াকান্দি"], spots: ["مহাস্থানগড়", "বেহুলার বাসর ঘর"], people: ["জিয়াউর রহমান"], hospitals: ["শহীদ জিয়াউর রহমান মেডিকেল"], food: "বগুড়ার বিখ্যাত দই ও খাজা।" },
-                    "pabna": { name: "পাবনা", upazilas: ["পাবনা সদর", "ঈশ্বরদী", "আটঘরিয়া", "চাটমোহর", "ভাঙ্গুড়া", "ফریدপুর", "বেড়া", "সুজানগর", "সাঁথিয়া"], spots: ["হার্ডিঞ্জ ব্রিজ", "পদ্মা নদী রিসোর্ট"], people: ["সুচিত্রা সেন"], hospitals: ["পাবনা মানসিক হাসপাতাল"], food: "পাবনার প্যারা সন্দেশ।" },
-                    "naogaon": { name: "নওগাঁ", upazilas: ["নওগাঁ সদর", "মহাদেবপুর", "বদলগাছী", "পত্নীতলা", "ধামইরহাট", "সাপাহার", "পোরশা", "নিয়ামতপুর", "আত্রাই", "রানীনগর", "মান্দা"], spots: ["পাহাড়পুর বৌদ্ধ বিহার", "কুসুম্বা মসজিদ"], people: ["মোহাম্মদ বায়তুল্লাহ"], hospitals: ["নওগাঁ সদর হাসপাতাল"], food: "প্যারা সন্দেশ।" },
-                    "natore": { name: "নাটোর", upazilas: ["নাটোর সদর", "সিংড়া", "বড়াইগ্রাম", "গুরুদাসপুর", "লালপুর", "বাগাতিপাড়া", "নলডাঙ্গা"], spots: ["উত্তরা গণভবন", "চলনবিল"], people: ["শরৎ কুমার রায়"], hospitals: ["নাটোর আধুনিক হাসপাতাল"], food: "কাঁচাগোল্লা।" },
-                    "joypurhat": { name: "জয়পুরহাট", upazilas: ["জয়পুরহাট সদর", "পাঁচবিবি", "আক্কেলপুর", "ক্ষেতলাল", "কালাই"], spots: ["হিন্দা-কসবা শাহী মসজিদ"], people: ["আব্দুল আলীম (গায়ক)"], hospitals: ["জয়পুরহাট আধুনিক হাসপাতাল"], food: "আলু এবং গুড়।" },
-                    "chapainawabganj": { name: "চাঁপাইনবাবগঞ্জ", upazilas: ["চাঁপাইনবাবগঞ্জ সদর", "শিবগঞ্জ", "গোমস্তাপুর", "নাচোল", "ভোলাহাট"], spots: ["ছোট সোনা মসজিদ"], people: ["ইলা মিত্র"], hospitals: ["চাঁপাইনবাবগঞ্জ জেলা হাসপাতাল"], food: "শিবগঞ্জের চমচম ও আম।" },
-                    "sirajganj": { name: "সিরাজগঞ্জ", upazilas: ["সিরাজগঞ্জ সদর", "বেলকুচি", "চৌহালী", "কামারখন্দ", "কাজীপুর", "রায়গঞ্জ", "শাহজাদপুর", "তাড়াশ", "উল্লাপাড়া"], spots: ["বঙ্গবন্ধু সেতু", "রবীন্দ্রনাথ ঠাকুরের কাচারী বাড়ি"], people: ["ক্যাপ্টেন এম মনসুর আলী"], hospitals: ["শহীদ এম মনসুর আলী মেডিকেল"], food: "পানিতোয়া মিষ্টি ও শাড়ি।" }
+                    "raj_d": { 
+                        name: { bn: "রাজশাহী", en: "Rajshahi" }, 
+                        upazilas: { bn: ["পবা", "গোদাগাড়ী", "তানোর", "মোহনপুর", "বাগমারা", "দুর্গাপুর", "পুঠিয়া", "চারঘাট", "বাঘা"], en: ["Paba", "Godagari", "Tanor", "Mohanpur", "Bagmara", "Durgapur", "Puthia", "Charghat", "Bagha"] }, 
+                        spots: { bn: ["পুঠিয়া রাজবাড়ি", "পদ্মা পাড়", "বরেন্দ্র গবেষণা জাদুঘর"], en: ["Puthia Rajbari", "Padma Riverside", "Varendra Research Museum"] }, 
+                        people: { bn: ["ক্যাপ্টেন মহিউদ্দিন জাহাঙ্গীর"], en: ["Captain Mohiuddin Jahangir"] }, 
+                        hospitals: { bn: ["রাজশাহী মেডিকেল কলেজ"], en: ["Rajshahi Medical College"] }, 
+                        food: { bn: "রসালো আম এবং রেশমি কাপড়।", en: "Juicy Mango and Silk Clothes." } 
+                    },
+                    "bogra": { 
+                        name: { bn: "বগুড়া", en: "Bogra" }, 
+                        upazilas: { bn: ["বগুড়া সদর", "মহাস্থানগড়", "শিবগঞ্জ", "শেরপুর", "ধুনট", "গাবতলী", "শাজাহানপুর", "কাহালু", "নন্দীগ্রাম", "আদমদীঘি", "দুপচাঁচিয়া", "সোনাতলা", "সারিয়াকান্দি"], en: ["Bogra Sadar", "Mahasthangarh", "Shibganj", "Sherpur", "Dhunat", "Gabtali", "Shajahanpur", "Kahalu", "Nandigram", "Adamdighi", "Dupchanchia", "Sonatala", "Sariakandi"] }, 
+                        spots: { bn: ["মহাস্থানগড়", "বেহুলার বাসর ঘর"], en: ["Mahasthangarh", "Behular Basor Ghor"] }, 
+                        people: { bn: ["জিয়াউর রহমান"], en: ["Ziaur Rahman"] }, 
+                        hospitals: { bn: ["শহীদ জিয়াউর রহমান মেডিকেল"], en: ["Shaheed Ziaur Rahman Medical College"] }, 
+                        food: { bn: "বগুড়ার বিখ্যাত দই ও খাজা।", en: "Bogra's Famous Curd and Khaja." } 
+                    },
+                    "pabna": { 
+                        name: { bn: "পাবনা", en: "Pabna" }, 
+                        upazilas: { bn: ["পাবনা সদর", "ঈশ্বরদী", "আটঘরিয়া", "চাটমোহর", "ভাঙ্গুড়া", "ফরিদপুর", "বেড়া", "সুজানগর", "সাঁথিয়া"], en: ["Pabna Sadar", "Ishwardi", "Atgharia", "Chatmohar", "Bhangura", "Faridpur", "Bera", "Sujanagar", "Santhia"] }, 
+                        spots: { bn: ["হার্ডিঞ্জ ব্রিজ", "পাকশী রিসোর্ট", "স্বপ্নদিপ রিসোর্ট", " রানা পার্ক" ], en: ["Hardinge Bridge", "Paksey Resort" "Shopnodip Resort", " Rana Park"] }, 
+                        people: { bn: ["সুচিত্রা সেন"], en: ["Suchitra Sen"] }, 
+                        hospitals: { bn: ["পাবনা মানসিক হাসপাতাল"], en: ["Pabna Mental Hospital"] }, 
+                        food: { bn: "পাবনার প্যারা সন্দেশ।", en: "Pabna's Para Sandesh." } 
+                    },
+                    "naogaon": { 
+                        name: { bn: "নওগাঁ", en: "Naogaon" }, 
+                        upazilas: { bn: ["নওগাঁ সদর", "মহাদেবপুর", "বদলগাছী", "পত্নীতলা", "ধামইরহাট", "সাপাহার", "পোরশা", "নিয়ামতপুর", "আত্রাই", "রানীনগর", "মান্দা"], en: ["Naogaon Sadar", "Mohadevpur", "Badalgachhi", "Patnitala", "Dhamoirhat", "Sapahar", "Porsha", "Niamatpur", "Atrai", "Raninagar", "Manda"] }, 
+                        spots: { bn: ["পাহাড়পুর বৌদ্ধ বিহার", "কুসুম্বা মসজিদ"], en: ["Paharpur Buddhist Vihara", "Kusumba Mosque"] }, 
+                        people: { bn: ["মোহাম্মদ বায়তুল্লাহ"], en: ["Mohammad Baitullah"] }, 
+                        hospitals: { bn: ["নওগাঁ সদর হাসপাতাল"], en: ["Naogaon Sadar Hospital"] }, 
+                        food: { bn: "প্যারা সন্দেশ।", en: "Para Sandesh Sweet." } 
+                    },
+                    "natore": { 
+                        name: { bn: "নাটোর", en: "Natore" }, 
+                        upazilas: { bn: ["নাটোর সদর", "সিংড়া", "বড়াইগ্রাম", "গুরুদাসপুর", "লালপুর", "বাগাতিপাড়া", "নলডাঙ্গা"], en: ["Natore Sadar", "Singra", "Baraigram", "Gurudaspur", "Lalpur", "Bagatipara", "Naldanga"] }, 
+                        spots: { bn: ["উত্তরা গণভবন", "চলনবিল"], en: ["Uttara Gonobhaban", "Chalan Beel"] }, 
+                        people: { bn: ["শরৎ কুমার রায়"], en: ["Sharad Kumar Ray"] }, 
+                        hospitals: { bn: ["নাটোর আধুনিক হাসপাতাল"], en: ["Natore Modern Hospital"] }, 
+                        food: { bn: "কাঁচাগোল্লা।", en: "Kachagolla Sweet." } 
+                    },
+                    "joypurhat": { 
+                        name: { bn: "জয়পুরহাট", en: "Joypurhat" }, 
+                        upazilas: { bn: ["জয়পুরহাট সদর", "পাঁচবিবি", "আক্কেলপুর", "ক্ষেতলাল", "কালাই"], en: ["Joypurhat Sadar", "Panchbibi", "Akkelpur", "Khetlal", "Kalai"] }, 
+                        spots: { bn: ["হিন্দা-কসবা শাহী মসজিদ"], en: ["Hinda-Kasba Shahi Mosque"] }, 
+                        people: { bn: ["আব্দুল আলীম (গায়ক)"], en: ["Abdul Alim (Singer)"] }, 
+                        hospitals: { bn: ["জয়পুরহাট আধুনিক হাসপাতাল"], en: ["Joypurhat Modern Hospital"] }, 
+                        food: { bn: "আলু এবং গুড়।", en: "Potato and Molasses." } 
+                    },
+                    "chapainawabganj": { 
+                        name: { bn: "চাঁপাইনবাবগঞ্জ", en: "Chapainawabganj" }, 
+                        upazilas: { bn: ["চাঁপাইনবাবগঞ্জ সদর", "শিবগঞ্জ", "গোমস্তাপুর", "নাচোল", "ভোলাহাট"], en: ["Chapainawabganj Sadar", "Shibganj", "Gomastapur", "Nachole", "Volahat"] }, 
+                        spots: { bn: ["ছোট সোনা মসজিদ"], en: ["Choto Sona Mosque"] }, 
+                        people: { bn: ["ইলা মিত্র"], en: ["Ila Mitra"] }, 
+                        hospitals: { bn: ["চাঁপাইনবাবগঞ্জ জেলা হাসপাতাল"], en: ["Chapainawabganj District Hospital"] }, 
+                        food: { bn: "শিবগঞ্জের চমচম ও আম।", en: "Shibganj's Chomchom and Mango." } 
+                    },
+                    "sirajganj": { 
+                        name: { bn: "সিরাজগঞ্জ", en: "Sirajganj" }, 
+                        upazilas: { bn: ["সিরাজগঞ্জ সদর", "বেলকুচি", "চৌহালী", "কামারখন্দ", "কাজীপুর", "রায়গঞ্জ", "শাহজাদপুর", "তাড়াশ", "উল্লাপাড়া"], en: ["Sirajganj Sadar", "Belkuchi", "Chauhali", "Kamarkhanda", "Kazipur", "Raiganj", "Shahzadpur", "Tarash", "Ullapara"] }, 
+                        spots: { bn: ["বঙ্গবন্ধু সেতু", "রবীন্দ্রনাথ ঠাকুরের কাচারী বাড়ি"], en: ["Bangabandhu Bridge", "Rabindranath Tagore's Kachari Bari"] }, 
+                        people: { bn: ["ক্যাপ্টেন এম মনসুর আলী"], en: ["Captain M Monsur Ali"] }, 
+                        hospitals: { bn: ["শহীদ এম মনসুর আলী মেডিকেল"], en: ["Shaheed M Monsur Ali Medical College"] }, 
+                        food: { bn: "পানিতোয়া মিষ্টি ও শাড়ি।", en: "Panitowa Sweet and Sharee." } 
+                    }
                 }
             },
             "khulna": {
-                name: "খুলনা",
+                name: { bn: "খুলনা", en: "Khulna" },
                 districts: {
-                    "khu_d": { name: "খুলনা", upazilas: ["রূপসা", "বটিয়াঘাটা", "তেরখাদা", "দিঘলিয়া", "ডুমুরিয়া", "পাইকগাছা", "কয়রা", "দাকোপ", "ফুলতলা"], spots: ["সুন্দরবন", "খান জাহান আলী সেতু"], people: ["প্রফুল্ল চন্দ্র রায়"], hospitals: ["খুলনা মেডিকেল কলেজ"], food: "চুইঝাল দিয়ে গরুর মাংস।" },
-                    "bagerhat": { name: "বাগেরহাট", upazilas: ["বাগেরহাট সদর", "ফকিরহাট", "مোল্লাহাট", "চিতলমারী", "কচুয়া", "রামপাল", "মোংলা", "মোড়েলগঞ্জ", "শরণখোলা"], spots: ["ষাট গম্বুজ মসজিদ"], people: ["খান জাহান আলী"], hospitals: ["বাগেরহাট সদর হাসপাতাল"], food: "চিংড়ি মাছ এবং সুপারি।" },
-                    "satkhira": { name: "সাতক্ষীরা", upazilas: ["সাতক্ষীরা সদর", "কলারোয়া", "তালা", "দেবহাটা", "কালীগঞ্জ", "শ্যামনগর", "আশাশুনি"], spots: ["সুন্দরবনের কলাগাছিয়া"], people: ["সেকান্দার আবু জাফর"], hospitals: ["সাতক্ষীরা জেলা হাসপাতাল"], food: "খাঁটি সুন্দরবনের মধু ও সন্দেশ।" },
-                    "jessore": { name: "যশোর", upazilas: ["যশোর সদর", "ঝিকরগাছা", "শার্শা", "চৌগাছা", "কেশবপুর", "مণিরামপুর", "অভয়নগর", "বাঘারপাড়া"], spots: ["মাইকেল মধুসূদন দত্তের বাড়ি"], people: ["মাইকেল মধুসূদন দত্ত"], hospitals: ["যশোর মেডিকেল কলেজ"], food: "যশোরের খেজুর গুড়ের পাটালি।" },
-                    "jhenaidah": { name: "ঝিনাইদহ", upazilas: ["ঝিনাইদহ সদর", "কালীগঞ্জ", "কোটচাঁদপুর", "মহেষপুর", "শৈলকুপা", "হরিণাকুণ্ডু"], spots: ["মিয়া দালান"], people: ["বাঘা যতীন"], hospitals: ["ঝিনাইদহ সদর হাসপাতাল"], food: "কলা এবং মিষ্টি।" },
-                    "magura": { name: "মাগুরা", upazilas: ["মাগুরা সদর", "শ্রীপুর", "মহম্মদপুর", "শালিখা"], spots: ["রাজা সীতারাম রায়ের প্রাসাদ"], people: ["সাকিব আল হাসান"], hospitals: ["মাগুরা সদর হাসপাতাল"], food: "মাগুরার চমচম।" },
-                    "narail": { name: "নড়াইল", upazilas: ["নড়াইল সদর", "লোহাগড়া", "কালিয়া"], spots: ["এস এম সুলতান স্মৃতি সংগ্রহশালা"], people: ["এস এম সুলতান", "মাশরাফি বিন মর্তুজা"], hospitals: ["নড়াইল সদর হাসপাতাল"], food: "প্যারা সন্দেশ।" },
-                    "kushtia": { name: "কুষ্টিয়া", upazilas: ["কুষ্টিয়া সদর", "কুমারখালী", "ভেড়ামারা", "মিরপুর", "খোকসা", "দৌলতপুর"], spots: ["লালন শাহের মাজার", "রবীন্দ্রনাথের কুঠিবাড়ি"], people: ["লালন শাহ", "مীর মশাররফ হোসেন"], hospitals: ["কুষ্টিয়া মেডিকেল কলেজ"], food: "তিলের খাজা ও কুলফি আইসক্রিম।" },
-                    "chuadanga": { name: "চুয়াডাঙ্গা", upazilas: ["চুয়াডাঙ্গা সদর", "আলমডাঙ্গা", "দামুড়হুদা", "জীবননগর"], spots: ["দর্শনা কেরু অ্যান্ড কোং"], people: ["সোলায়মান হক জোয়ার্দ্দার"], hospitals: ["চুয়াডাঙ্গা সদর হাসপাতাল"], food: "ভুট্টা এবং আম।" },
-                    "meherpur": { name: "মেহেরপুর", upazilas: ["মেহেরপুর সদর", "মুজিবনগর", "গাংনী"], spots: ["মুজিবনগর স্মৃতিসৌধ"], people: ["সৈয়দ আশরাফুল ইসলাম"], hospitals: ["মেহেরপুর জেলা হাসপাতাল"], food: "সাবিত্রী মিষ্টি।" }
+                    "khu_d": { 
+                        name: { bn: "খুলনা", en: "Khulna" }, 
+                        upazilas: { bn: ["রূপসা", "বটিয়াঘাটা", "তেরখাদা", "দিঘলিয়া", "ডুমুরিয়া", "পাইকগাছা", "কয়রা", "দাকোপ", "ফুলতলা"], en: ["Rupsha", "Batiaghata", "Terokhada", "Digholia", "Dumuria", "Paikgachha", "Koyra", "Dacope", "Phultala"] }, 
+                        spots: { bn: ["সুন্দরবন", "খান জাহান আলী সেতু"], en: ["Sundarbans", "Khan Jahan Ali Bridge"] }, 
+                        people: { bn: ["প্রফুল্ল চন্দ্র রায়"], en: ["Prafulla Chandra Roy"] }, 
+                        hospitals: { bn: ["খুলনা মেডিকেল কলেজ"], en: ["Khulna Medical College"] }, 
+                        food: { bn: "চুইঝাল দিয়ে গরুর মাংস।", en: "Beef cooked with Chuijhal." } 
+                    },
+                    "bagerhat": { 
+                        name: { bn: "বাগেরহাট", en: "Bagerhat" }, 
+                        upazilas: { bn: ["বাগেরহাট সদর", "ফকিরহাট", "মোল্লাহাট", "চিতলমারী", "কচুয়া", "রামপাল", "মোংলা", "মোড়েলগঞ্জ", "শরণখোলা"], en: ["Bagerhat Sadar", "Fakirhat", "Mollahat", "Chitalmari", "Kachua", "Rampal", "Mongla", "Morelganj", "Sarankhola"] }, 
+                        spots: { bn: ["ষাট গম্বুজ মসজিদ"], en: ["Sixty Dome Mosque"] }, 
+                        people: { bn: ["খান জাহান আলী"], en: ["Khan Jahan Ali"] }, 
+                        hospitals: { bn: ["বাগেরহাট সদর হাসপাতাল"], en: ["Bagerhat Sadar Hospital"] }, 
+                        food: { bn: "চিংড়ি মাছ এবং সুপারি।", en: "Shrimp and Betel Nut." } 
+                    },
+                    "satkhira": { 
+                        name: { bn: "সাতক্ষীরা", en: "Satkhira" }, 
+                        upazilas: { bn: ["সাতক্ষীরা সদর", "কলারোয়া", "তালা", "দেবহাটা", "কালীগঞ্জ", "শ্যামনগর", "আশাশুনি"], en: ["Satkhira Sadar", "Kalaroa", "Tala", "Debhata", "Kaliganj", "Shyamnagar", "Assasuni"] }, 
+                        spots: { bn: ["সুন্দরবনের কলাগাছিয়া"], en: ["Kalagachhia of Sundarbans"] }, 
+                        people: { bn: ["সেকান্দার আবু জাফর"], en: ["Secandar Abu Zafar"] }, 
+                        hospitals: { bn: ["সাতক্ষীরা জেলা হাসপাতাল"], en: ["Satkhira District Hospital"] }, 
+                        food: { bn: "খাঁটি সুন্দরবনের মধু ও সন্দেশ।", en: "Pure Sundarbans Honey and Sandesh." } 
+                    },
+                    "jessore": { 
+                        name: { bn: "যশোর", en: "Jessore" }, 
+                        upazilas: { bn: ["যশোর সদর", "ঝিকরগাছা", "শার্শা", "চৌগাছা", "কেশবপুর", "মণিরামপুর", "অভয়নগর", "বাঘারপাড়া"], en: ["Jessore Sadar", "Jhikargachha", "Sharsha", "Chougachha", "Keshabpur", "Monirampur", "Abhaynagar", "Bagharpara"] }, 
+                        spots: { bn: ["মাইকেল মধুসূদন দত্তের বাড়ি"], en: ["Michael Madhusudan Dutt's House"] }, 
+                        people: { bn: ["মাইকেল মধুসূদন দত্ত"], en: ["Michael Madhusudan Dutt"] }, 
+                        hospitals: { bn: ["যশোর মেডিকেল কলেজ"], en: ["Jessore Medical College"] }, 
+                        food: { bn: "যশোরের খেজুর গুড়ের পাটালি।", en: "Jessore's Date Molasses Patali." } 
+                    },
+                    "jhenaidah": { 
+                        name: { bn: "ঝিনাইদহ", en: "Jhenaidah" }, 
+                        upazilas: { bn: ["ঝিনাইদহ সদর", "কালীগঞ্জ", "কোটচাঁদপুর", "মহেষপুর", "শৈলকুপা", "হরিণাকুণ্ডু"], en: ["Jhenaidah Sadar", "Kaliganj", "Kotchandpur", "Moheshpur", "Shailakupa", "Harinakundu"] }, 
+                        spots: { bn: ["মিয়া দালান"], en: ["Mia Dalan"] }, 
+                        people: { bn: ["বাঘা যতীন"], en: ["Bagha Jatin"] }, 
+                        hospitals: { bn: ["ঝিনাইদহ সদর হাসপাতাল"], en: ["Jhenaidah Sadar Hospital"] }, 
+                        food: { bn: "কলা এবং মিষ্টি।", en: "Banana and Sweets." } 
+                    },
+                    "magura": { 
+                        name: { bn: "মাগুরা", en: "Magura" }, 
+                        upazilas: { bn: ["মাগুরা সদর", "শ্রীপুর", "মহম্মদপুর", "শালিখা"], en: ["Magura Sadar", "Sreepur", "Mohammadpur", "Shalikha"] }, 
+                        spots: { bn: ["রাজা সীতারাম রায়ের প্রাসাদ"], en: ["Raja Sitaram Ray's Palace"] }, 
+                        people: { bn: ["সাকিব আল হাসান"], en: ["Shakib Al Hasan"] }, 
+                        hospitals: { bn: ["মাগুরা সদর হাসপাতাল"], en: ["Magura Sadar Hospital"] }, 
+                        food: { bn: "মাগুরার চমচম।", en: "Chomchom of Magura." } 
+                    },
+                    "narail": { 
+                        name: { bn: "নড়াইল", en: "Narail" }, 
+                        upazilas: { bn: ["নড়াইল সদর", "লোহাগড়া", "কালিয়া"], en: ["Narail Sadar", "Lohagara", "Kalia"] }, 
+                        spots: { bn: ["এস এম সুলতান স্মৃতি সংগ্রহশালা"], en: ["SM Sultan Memorial Museum"] }, 
+                        people: { bn: ["এস এম সুলতান", "মাশরাফি বিন মর্তুজা"], en: ["SM Sultan", "Mashrafe Bin Mortaza"] }, 
+                        hospitals: { bn: ["নড়াইল সদর হাসপাতাল"], en: ["Narail Sadar Hospital"] }, 
+                        food: { bn: "প্যারা সন্দেশ।", en: "Para Sandesh Sweet." } 
+                    },
+                    "kushtia": { 
+                        name: { bn: "কুষ্টিয়া", en: "Kushtia" }, 
+                        upazilas: { bn: ["কুষ্টিয়া সদর", "কুমারখালী", "ভেড়ামারা", "মিরপুর", "খোকসা", "দৌলতপুর"], en: ["Kushtia Sadar", "Kumarkhali", "Bheramara", "Mirpur", "Khoksa", "Daulatpur"] }, 
+                        spots: { bn: ["লালন শাহের মাজার", "রবীন্দ্রনাথের কুঠিবাড়ি"], en: ["Lalon Shah Mazar", "Rabindranath's Kuthibari"] }, 
+                        people: { bn: ["লালন শাহ", "মীর মশাররফ হোসেন"], en: ["Lalon Shah", "Mir Mosharraf Hossain"] }, 
+                        hospitals: { bn: ["কুষ্টিয়া মেডিকেল কলেজ"], en: ["Kushtia Medical College"] }, 
+                        food: { bn: "তিলের খাজা ও কুলফি আইসক্রিম।", en: "Tiler Khaja and Kulfi Ice-cream." } 
+                    },
+                    "chuadanga": { 
+                        name: { bn: "চুয়াডাঙ্গা", en: "Chuadanga" }, 
+                        upazilas: { bn: ["চুয়াডাঙ্গা সদর", "আলমডাঙ্গা", "দামুড়হুদা", "জীবননগর"], en: ["Chuadanga Sadar", "Alamdanga", "Damurhuda", "Jibannagar"] }, 
+                        spots: { bn: ["দর্শনা কেরু অ্যান্ড কোং"], en: ["Carew & Co. Darshana"] }, 
+                        people: { bn: ["সোলায়মান হক জোয়ার্দ্দার"], en: ["Solaiman Haq Joarder"] }, 
+                        hospitals: { bn: ["চুয়াডাঙ্গা সদর হাসপাতাল"], en: ["Chuadanga Sadar Hospital"] }, 
+                        food: { bn: "ভুট্টা এবং আম।", en: "Corn and Mango." } 
+                    },
+                    "meherpur": { 
+                        name: { bn: "মেহেরপুর", en: "Meherpur" }, 
+                        upazilas: { bn: ["মেহেরপুর সদর", "মুজিবনগর", "গাংনী"], en: ["Meherpur Sadar", "Mujibnagar", "Gangni"] }, 
+                        spots: { bn: ["মুজিবনগর স্মৃতিসৌধ"], en: ["Mujibnagar Memorial Monument"] }, 
+                        people: { bn: ["সৈয়দ আশরাফুল ইসলাম"], en: ["Syed Ashraful Islam"] }, 
+                        hospitals: { bn: ["মেহেরপুর জেলা হাসপাতাল"], en: ["Meherpur District Hospital"] }, 
+                        food: { bn: "সাবিত্রী মিষ্টি।", en: "Sabitri Sweet." } 
+                    }
                 }
             },
             "barisal": {
-                name: "বরিশাল",
+                name: { bn: "বরিশাল", en: "Barisal" },
                 districts: {
-                    "bar_d": { name: "বরিশাল", upazilas: ["বরিশাল সদর", "বাকেরগঞ্জ", "বাবুগঞ্জ", "উজিরপুর", "বানারীপাড়া", "গৌরনদী", "আগৈলঝরা", "মুলাদী", "মেহেন্দীগঞ্জ", "হিজলা"], spots: ["ভাসমান পেয়ারা বাজার", "দুর্গাসাগর দীঘি"], people: ["শেরে বাংলা এ কে ফজলুল হক"], hospitals: ["শের-ই-বাংলা মেডিকেল"], food: "আমড়া এবং বালাম চাল।" },
-                    "bhola": { name: "ভোলা", upazilas: ["ভোলা সদর", "বোরহানউদ্দিন", "দৌলতখান", "লালমোহন", "চরফ্যাশন", "তজুমদ্দিন", "মনপুরা"], spots: ["মনপুরা দ্বীপ", "চর কুকরি-مুকরি"], people: ["মোস্তফা কামাল (বীরশ্রেষ্ঠ)"], hospitals: ["ভোলা সদর হাসপাতাল"], food: "মহিষের দুধের টক দই।" },
-                    "patuakhali": { name: "পটুয়াখালী", upazilas: ["পটুয়াখালী সদর", "কলাপাড়া", "বাউফল", "গলাচিপা", "দশমিনা", "মির্জাগঞ্জ", "দুমকি", "রাঙ্গাবালী"], spots: ["কুয়াকাটা সমুদ্র সৈকত"], people: ["হাবিবুর রহমান"], hospitals: ["পটুয়াখালী মেডিকেল কলেজ"], food: "শুঁটকি মাছ এবং নারিকেল।" },
-                    "pirojpur": { name: "পিরোজপুর", upazilas: ["পিরোজপুর সদর", "নাজিরপুর", "নেছারাবাদ (স্বরূপকাঠি)", "কাউখালী", "ভাণ্ডারিয়া", "مঠবাড়ীয়া", "ইন্দুরকানি"], spots: ["স্বরূপকাঠির পেয়ারা বাগান"], people: ["তোফায়েল আহমেদ"], hospitals: ["পিরোজপুর জেলা হাসপাতাল"], food: "মাল্টা ও আমড়া।" },
-                    "jhalokathi": { name: "ঝালকাঠি", upazilas: ["ঝালকাঠি সদর", "নলছিটি", "রাজাপুর", "কাঠালিয়া"], spots: ["কীর্তিপাশা জমিদার বাড়ি"], people: ["কামিনী রায়"], hospitals: ["ঝালকাঠি সদর হাসপাতাল"], food: "ঝালকাঠির রসগোল্লা।" },
-                    "barguna": { name: "বরগুনা", upazilas: ["বরগুনা সদর", "আমতলী", "পাথরঘাটা", "বামনা", "বেতাগী", "তালতলী"], spots: ["শুভ সন্ধ্যার সমুদ্র সৈকত"], people: ["শাহজাদা আব্দুল মালেক"], hospitals: ["বরগুনা জেলা হাসপাতাল"], food: "চিংড়ি ও শুঁটকি।" }
+                    "bar_d": { 
+                        name: { bn: "বরিশাল", en: "Barisal" }, 
+                        upazilas: { bn: ["বরিশাল সদর", "বাকেরগঞ্জ", "বাবুগঞ্জ", "উজিরপুর", "বানারীপাড়া", "গৌরনদী", "আগৈলঝরা", "মুলাদী", "মেহেন্দীগঞ্জ", "হিজলা"], en: ["Barisal Sadar", "Bakerganj", "Babuganj", "Wazirpur", "Banaripara", "Gournadi", "Agailjhara", "Muladi", "Mehendiganj", "Hizla"] }, 
+                        spots: { bn: ["ভাসমান পেয়ারা বাজার", "দুর্গাসাগর দীঘি"], en: ["Floating Guava Market", "Durgasagar Dighi"] }, 
+                        people: { bn: ["শেরে বাংলা এ কে ফজলুল হক"], en: ["Sher-e-Bangla A K Fazlul Huq"] }, 
+                        hospitals: { bn: ["শের-ই-বাংলা মেডিকেল"], en: ["Sher-e-Bangla Medical College"] }, 
+                        food: { bn: "আমড়া এবং বালাম চাল।", en: "Hog Plum and Balam Rice." } 
+                    },
+                    "bhola": { 
+                        name: { bn: "ভোলা", en: "Bhola" }, 
+                        upazilas: { bn: ["ভোলা সদর", "বোরহানউদ্দিন", "দৌলতখান", "লালমোহন", "চরফ্যাশন", "তজুমদ্দিন", "মনপুরা"], en: ["Bhola Sadar", "Burhanuddin", "Daulatkhan", "Lalmohan", "Char Fasson", "Tazumuddin", "Monpura"] }, 
+                        spots: { bn: ["মনপুরা দ্বীপ", "চর কুকরি-মুকরি"], en: ["Monpura Island", "Char Kukri-Mukri"] }, 
+                        people: { bn: ["মোস্তফা কামাল (বীরশ্রেষ্ঠ)"], en: ["Mostafa Kamal (Bir Sreshtho)"] }, 
+                        hospitals: { bn: ["ভোলা সদর হাসপাতাল"], en: ["Bhola Sadar Hospital"] }, 
+                        food: { bn: "মহিষের দুধের টক দই।", en: "Buffalo Milk Sour Curd." } 
+                    },
+                    "patuakhali": { 
+                        name: { bn: "পটুয়াখালী", en: "Patuakhali" }, 
+                        upazilas: { bn: ["পটুয়াখালী সদর", "কলাপাড়া", "বাউফল", "গলাচিপা", "দশমিনা", "মির্জাগঞ্জ", "দুমকি", "রাঙ্গাবালী"], en: ["Patuakhali Sadar", "Kalapara", "Bauphal", "Galachipa", "Dashmina", "Mirzaganj", "Dumki", "Rangabali"] }, 
+                        spots: { bn: ["কুয়াকাটা সমুদ্র সৈকত"], en: ["Kuakata Sea Beach"] }, 
+                        people: { bn: ["হাবিবুর রহমান"], en: ["Habibur Rahman"] }, 
+                        hospitals: { bn: ["পটুয়াখালী মেডিকেল কলেজ"], en: ["Patuakhali Medical College"] }, 
+                        food: { bn: "শুঁটকি মাছ এবং নারিকেল।", en: "Dried Fish and Coconut." } 
+                    },
+                    "pirojpur": { 
+                        name: { bn: "পিরোজপুর", en: "Pirojpur" }, 
+                        upazilas: { bn: ["পিরোজপুর সদর", "নাজিরপুর", "নেছারাবাদ (স্বরূপকাঠি)", "কাউখালী", "ভাণ্ডারিয়া", "মঠবাড়ীয়া", "ইন্দুরকানি"], en: ["Pirojpur Sadar", "Nazirpur", "Nesarabad (Swarupkathi)", "Kawkhali", "Bhandaria", "Mathbaria", "Indurkani"] }, 
+                        spots: { bn: ["স্বরূপকাঠির পেয়ারা বাগান"], en: ["Swarupkathi Guava Orchard"] }, 
+                        people: { bn: ["তোফায়েল আহমেদ"], en: ["Tofail Ahmed"] }, 
+                        hospitals: { bn: ["পিরোজপুর জেলা হাসপাতাল"], en: ["Pirojpur District Hospital"] }, 
+                        food: { bn: "মাল্টা ও আমড়া।", en: "Malta and Hog Plum." } 
+                    },
+                    "jhalokathi": { 
+                        name: { bn: "ঝালকাঠি", en: "Jhalokathi" }, 
+                        upazilas: { bn: ["ঝালকাঠি সদর", "নলছিটি", "রাজাপুর", "কাঠালিয়া"], en: ["Jhalokathi Sadar", "Nalchity", "Rajapur", "Kathalia"] }, 
+                        spots: { bn: ["কীর্তিপাশা জমিদার বাড়ি"], en: ["Kirtipasha Zamindar Bari"] }, 
+                        people: { bn: ["কামিনী রায়"], en: ["Kamini Roy"] }, 
+                        hospitals: { bn: ["ঝালকাঠি সদর হাসপাতাল"], en: ["Jhalokathi Sadar Hospital"] }, 
+                        food: { bn: "ঝালকাঠির রসগোল্লা।", en: "Jhalokathi's Rasgulla." } 
+                    },
+                    "barguna": { 
+                        name: { bn: "বরগুনা", en: "Barguna" }, 
+                        upazilas: { bn: ["বরগুনা সদর", "আমতলী", "পাথরঘাটা", "বামনা", "বেতাগী", "তালতলী"], en: ["Barguna Sadar", "Amtali", "Patharghata", "Bamna", "Betagi", "Taltali"] }, 
+                        spots: { bn: ["শুভ সন্ধ্যার সমুদ্র সৈকত"], en: ["Shuvoshondha Sea Beach"] }, 
+                        people: { bn: ["শাহজাদা আব্দুল মালেক"], en: ["Shahzada Abdul Malek"] }, 
+                        hospitals: { bn: ["বরগুনা জেলা হাসপাতাল"], en: ["Barguna District Hospital"] }, 
+                        food: { bn: "চिंगড়ি ও শুঁটকি।", en: "Shrimp and Dried Fish." } 
+                    }
                 }
             },
             "sylhet": {
-                name: "সিলেট",
+                name: { bn: "সিলেট", en: "Sylhet" },
                 districts: {
-                    "syl_d": { name: "সিলেট", upazilas: ["সিলেট সদর", "কানাইঘাট", "জৈنتাপুর", "গোয়ালাবাজার", "গোলাপগঞ্জ", "বিয়ানীবাজার", "কোম্পানীগঞ্জ", "ফেঞ্চুগঞ্জ", "বালাগঞ্জ", "বিশ্বনাথ", "জকিগঞ্জ", "দক্ষিণ সুরমা"], spots: ["হযরত শাহজালাল মাজার", "জাফলং", "রাতারগুল"], people: ["হযরত শাহজালাল", "এম এ জি ওসমানী"], hospitals: ["ওসমানী মেডিকেল কলেজ"], food: "সাতকড়ার গরুর মাংস ও সাত রঙের চা।" },
-                    "moulvibazar": { name: "মৌলভীবাজার", upazilas: ["মৌলভীবাজার সদর", "শ্রীমঙ্গল", "কমলগঞ্জ", "কুলাউড়া", "রাজনগর", "জুড়ী", "বড়লেখা"], spots: ["লাউয়াছড়া জাতীয় উদ্যান", "মাধবকুণ্ড জলপ্রপাত"], people: ["সৈয়দ মুজতবা আলী"], hospitals: ["মৌলভীবাজার ২৫০ শয্যা"], food: "শ্রীমঙ্গলের চা এবং মণিপুরি খাসিয়া খাবার।" },
-                    "habiganj": { name: "হবিগঞ্জ", upazilas: ["হবিগঞ্জ সদর", "নবীগঞ্জ", "বাহুবল", "আজমিরীগঞ্জ", "বানিয়াচং", "লাখাই", "চুনারুঘাট", "মাধবপুর", "শায়েস্তাগঞ্জ"], spots: ["সাতছড়ি জাতীয় উদ্যান"], people: ["বিপিন চন্দ্র পাল"], hospitals: ["হবিগঞ্জ আধুনিক জেলা হাসপাতাল"], food: "চা পাতা ও রুই মাছ।" },
-                    "sunamganj": { name: "সুনামগঞ্জ", upazilas: ["সুনামগঞ্জ সদর", "ছাতক", "জগন্নাথপুর", "দিরাই", "শাল্লা", "ধরমপাশা", "তাহিরপুর", "বিশ্বম্ভরপুর"], spots: ["টাঙ্গুয়ার হাওর", "যাদুকাটা নদী"], people: ["হাসন রাজা", "রাধারমণ দত্ত"], hospitals: ["সুনামগঞ্জ সদর হাসপাতাল"], food: "হাওরের তাজা মাছ।" }
+                    "syl_d": { 
+                        name: { bn: "সিলেট", en: "Sylhet" }, 
+                        upazilas: { bn: ["সিলেট সদর", "কানাইঘাট", "জৈন্তাপুর", "গোয়ালাবাজার", "গোলাপগঞ্জ", "বিয়ানীবাজার", "কোম্পানীগঞ্জ", "ফেঞ্চুগঞ্জ", "বালাগঞ্জ", "বিশ্বনাথ", "জকিগঞ্জ", "দক্ষিণ সুরমা"], en: ["Sylhet Sadar", "Kanaighat", "Jaintiapur", "Goalabazar", "Golapganj", "Beanibazar", "Companiganj", "Fenchuganj", "Balaganj", "Biswanath", "Zakiganj", "South Surma"] }, 
+                        spots: { bn: ["হযরত শাহজালাল মাজার", "জাফলং", "রাতারগুল"], en: ["Hazrat Shahjalal Mazar", "Jaflong", "Ratargul Swamp Forest"] }, 
+                        people: { bn: ["হযরত শাহজালাল", "এম এ জি ওসমানী"], en: ["Hazrat Shahjalal", "M A G Osmani"] }, 
+                        hospitals: { bn: ["ওসমানী মেডিকেল কলেজ"], en: ["Osmani Medical College"] }, 
+                        food: { bn: "সাতকড়ার গরুর মাংস ও সাত রঙের চা।", en: "Beef cooked with Satkora and 7-layer Tea." } 
+                    },
+                    "moulvibazar": { 
+                        name: { bn: "মৌলভীবাজার", en: "Moulvibazar" }, 
+                        upazilas: { bn: ["মৌলভীবাজার সদর", "শ্রীমঙ্গল", "কমলগঞ্জ", "কুলাউড়া", "রাজনগর", "জুড়ী", "বড়লেখা"], en: ["Moulvibazar Sadar", "Sreemangal", "Kamalganj", "Kulaura", "Rajnagar", "Juri", "Borolekha"] }, 
+                        spots: { bn: ["লাউয়াছড়া জাতীয় উদ্যান", "মাধবকুণ্ড জলপ্রপাত"], en: ["Lawachara National Park", "Madhabkunda Waterfall"] }, 
+                        people: { bn: ["সৈয়দ মুজতবা আলী"], en: ["Syed Muztaba Ali"] }, 
+                        hospitals: { bn: ["মৌলভীবাজার ২৫০ শয্যা"], en: ["Moulvibazar 250 Bed Hospital"] }, 
+                        food: { bn: "শ্রীমঙ্গলের চা এবং মণিপুরি খাসিয়া খাবার।", en: "Sreemangal's Tea and Manipuri-Khasia native food." } 
+                    },
+                    "habiganj": { 
+                        name: { bn: "হবিগঞ্জ", en: "Habiganj" }, 
+                        upazilas: { bn: ["হবিগঞ্জ সদর", "নবীগঞ্জ", "বাহুবল", "আজমিরীগঞ্জ", "বানিয়াচং", "লাখাই", "চুনারুঘাট", "মাধবপুর", "শায়েস্তাগঞ্জ"], en: ["Habiganj Sadar", "Nabiganj", "Bahubal", "Ajmiriganj", "Baniachong", "Lakhai", "Chunarughat", "Madhabpur", "Shayestaganj"] }, 
+                        spots: { bn: ["সাতছড়ি জাতীয় উদ্যান"], en: ["Satchhari National Park"] }, 
+                        people: { bn: ["বিপিন চন্দ্র পাল"], en: ["Bipin Chandra Pal"] }, 
+                        hospitals: { bn: ["হবিগঞ্জ আধুনিক জেলা হাসপাতাল"], en: ["Habiganj Modern District Hospital"] }, 
+                        food: { bn: "চা পাতা ও রুই মাছ।", en: "Tea leaves and Rui Fish." } 
+                    },
+                    "sunamganj": { 
+                        name: { bn: "সুনামগঞ্জ", en: "Sunamganj" }, 
+                        upazilas: { bn: ["সুনামগঞ্জ সদর", "ছাতক", "জগন্নাথপুর", "দিরাই", "শাল্লা", "ধরমপাশা", "তাহিরপুর", "বিশ্বম্ভরপুর"], en: ["Sunamganj Sadar", "Chhatak", "Jagannathpur", "Dirai", "Shalla", "Dharampasha", "Tahirpur", "Bishwamandarpur"] }, 
+                        spots: { bn: ["টাঙ্গুয়ার হাওর", "যাদুকাটা নদী"], en: ["Tanguar Haor", "Jadukata River"] }, 
+                        people: { bn: ["হাসন রাজা", "রাধারমণ দত্ত"], en: ["Hason Raja", "Radharaman Dutta"] }, 
+                        hospitals: { bn: ["সুনামগঞ্জ সদর হাসপাতাল"], en: ["Sunamganj Sadar Hospital"] }, 
+                        food: { bn: "হাওরের তাজা মাছ।", en: "Fresh Haor Fish." } 
+                    }
                 }
             },
             "rangpur": {
-                name: "রংপুর",
+                name: { bn: "রংপুর", en: "Rangpur" },
                 districts: {
-                    "ran_d": { name: "রংপুর", upazilas: ["রংপুর সদর", "মিঠাপুকুর", "পীরগঞ্জ", "কাউনিয়া", "গঙ্গাচড়া", "তারাগঞ্জ", "বদরগঞ্জ", "পীরগাছা"], spots: ["তাজহাট জমিদার বাড়ি", "ভিন্নজগত"], people: ["বেগম রোকেয়া"], hospitals: ["রংপুর মেডিকেল কলেজ"], food: "হাড়িভাঙ্গা আম।" },
-                    "dinajpur": { name: "দিনাজপুর", upazilas: ["দিনাজপুর সদর", "কাহারোল", "বীরগঞ্জ", "বোচাগঞ্জ", "চিরিরবন্দর", "ফুলবাড়ী", "পার্বতীপুর", "নবাবগঞ্জ", "বিরামপুর", "হাকিমপুর", "ঘোড়াঘাট"], spots: ["কান্তজীউ মন্দির", "রামসাগর দিঘী"], people: ["হাজী মোহাম্মদ দানেশ"], hospitals: ["এম আব্দুর রহিম মেডিকেল"], food: "দিনাজপুরের লিচু ও কাটারিভোগ চাল।" },
-                    "kurigram": { name: "কুড়িগ্রাম", upazilas: ["কুড়িগ্রাম সদর", "উলিপুর", "চিলমারী", "রুমারী", "রাজিবপুর", "নাগেশ্বরী", "ভুরুঙ্গামারী", "ফুলবাড়ী"], spots: ["চিলমারী বন্দর"], people: ["সৈয়দ শামসুল হক"], hospitals: ["কুড়িগ্রাম জেনারেল হাসপাতাল"], food: "ক্ষীর এবং নারিকেল পিঠা।" },
-                    "gaibandha": { name: "গাইবান্ধা", upazilas: ["গাইবান্ধা সদর", "ফুলছড়ি", "সাঘাটা", "গোবিন্দগঞ্জ", "পলাশবাড়ী", "সাদুল্লাপুর", "সুন্দরগঞ্জ"], spots: ["বালাসী ঘাট"], people: ["আহমেদ রফিক"], hospitals: ["গাইবান্ধা জেলা হাসপাতাল"], food: "গাইবান্ধার রসমঞ্জরী মিষ্টি।" },
-                    "lalmonirhat": { name: "লালমনিরহাট", upazilas: ["লালমনিরহাট সদর", "মহেন্দ্রনগর", "আদিতমারী", "কালীগঞ্জ", "হাতীবান্ধা", "পাটগ্রাম"], spots: ["তিস্তা ব্যারাজ"], people: ["শেখ ফজলল করীম"], hospitals: ["লালমনিরহাট সদর হাসপাতাল"], food: "তামাক এবং ভুট্টা।" },
-                    "nilphamari": { name: "নীলфামারী", upazilas: ["নীলফামারী সদর", "সৈয়দপুর", "डोমার", "ডিমла", "জলঢাকা", "কিশোরগঞ্জ"], spots: ["নীলসাগর"], people: ["আসাদুজ্জামান নূর"], hospitals: ["নীলফামারী জেলা হাসপাতাল"], food: "ডোমারের বাঁশের তৈরি শিল্প।" },
-                    "panchagarh": { name: "পঞ্চগড়", upazilas: ["পঞ্চগড় সদর", "তেঁতুলিয়া", "বোদা", "দেবীগঞ্জ", "আটোয়ারী"], spots: ["তেঁতুলিয়া ডাকবাংলো", "সমতল ভূমির চা বাগান"], people: ["শরিফুল ইসলাম"], hospitals: ["পঞ্চগড় আধুনিক হাসপাতাল"], food: "অর্গানিক গ্রিন টি।" },
-                    "thakurgaon": { name: "ঠাকুরগাঁও", upazilas: ["ঠাকুরগাঁও সদর", "পীরগঞ্জ", "বালিয়াডাঙ্গী", "রাণীশংকৈল", "হরিপুর"], spots: ["বালিয়াডাঙ্গী সূর্যপুরী আমগাছ"], people: ["মির্জা ফখরুল ইসলাম আলমগীর"], hospitals: ["ঠাকুরগাঁও আধুনিক হাসপাতাল"], food: "সূর্যপুরী আম।" }
+                    "ran_d": { 
+                        name: { bn: "রংপুর", en: "Rangpur" }, 
+                        upazilas: { bn: ["রংপুর সদর", "মিঠাপুকুর", "পীরগঞ্জ", "কাউনিয়া", "গঙ্গাচড়া", "তারাগঞ্জ", "বদরগঞ্জ", "পীরগাছা"], en: ["Rangpur Sadar", "Mithapukur", "Pirganj", "Kaunia", "Gangachhara", "Taraganj", "Badarganj", "Pirgachha"] }, 
+                        spots: { bn: ["তাজহাট জমিদার বাড়ি", "ভিন্নজগত"], en: ["Tajhat Zamindar Bari", "Vinnojogot"] }, 
+                        people: { bn: ["বেগম রোকেয়া"], en: ["Begum Rokeya"] }, 
+                        hospitals: { bn: ["রংপুর মেডিকেল কলেজ"], en: ["Rangpur Medical College"] }, 
+                        food: { bn: "হাড়িভাঙ্গা আম।", en: "Harivanga Mango." } 
+                    },
+                    "dinajpur": { 
+                        name: { bn: "দিনাজপুর", en: "Dinajpur" }, 
+                        upazilas: { bn: ["দিনাজপুর সদর", "কাহারোল", "বীরগঞ্জ", "বোচাগঞ্জ", "চিরিরবন্দর", "ফুলবাড়ী", "পার্বতীপুর", "নবাবগঞ্জ", "বিরামপুর", "হাকিমপুর", "ঘোড়াঘাট"], en: ["Dinajpur Sadar", "Kaharole", "Birganj", "Bochaganj", "Chirirbandar", "Phulbari", "Parbatipur", "Nawabganj", "Birampur", "Hakimpur", "Ghoraghat"] }, 
+                        spots: { bn: ["কান্তজীউ মন্দির", "রামসাগর দিঘী"], en: ["Kantajew Temple", "Ramsagar Dighi"] }, 
+                        people: { bn: ["হাজী মোহাম্মদ দানেশ"], en: ["Haji Mohammad Danesh"] }, 
+                        hospitals: { bn: ["এম আব্দুর রহিম মেডিকেল"], en: ["M Abdur Rahim Medical College"] }, 
+                        food: { bn: "দিনাজপুরের লিচু ও কাটারিভোগ চাল।", en: "Dinajpur's Litchi and Kataribhog Rice." } 
+                    },
+                    "kurigram": { 
+                        name: { bn: "কুড়িগ্রাম", en: "Kurigram" }, 
+                        upazilas: { bn: ["কুড়িগ্রাম সদর", "উলিপুর", "চিলমারী", "রুমারী", "রাজিবপুর", "নাগেশ্বরী", "ভুরুঙ্গামারী", "ফুলবাড়ী"], en: ["Kurigram Sadar", "Ulipur", "Chilmari", "Rumari", "Rajibpur", "Nageshwari", "Bhurungamari", "Phulbari"] }, 
+                        spots: { bn: ["চিলমারী বন্দর"], en: ["Chilmari Port"] }, 
+                        people: { bn: ["সৈয়দ শামসুল হক"], en: ["Syed Shamsul Haq"] }, 
+                        hospitals: { bn: ["কুড়িগ্রাম জেনারেল হাসপাতাল"], en: ["Kurigram General Hospital"] }, 
+                        food: { bn: "ক্ষীর এবং নারিকেল পিঠা।", en: "Kheer and Coconut Pitha." } 
+                    },
+                    "gaibandha": { 
+                        name: { bn: "গাইবান্ধা", en: "Gaibandha" }, 
+                        upazilas: { bn: ["গাইবান্ধা সদর", "ফুলছড়ি", "সাঘাটা", "গোবিন্দগঞ্জ", "পलाশবাড়ী", "সাদুল্লাপুর", "সুন্দরগঞ্জ"], en: ["Gaibandha Sadar", "Fulchhari", "Saghata", "Gobindaganj", "Palashbari", "Sadullapur", "Sundarganj"] }, 
+                        spots: { bn: ["বালাসী ঘাট"], en: ["Balasi Ghat"] }, 
+                        people: { bn: ["আহমেদ রফিক"], en: ["Ahmed Rafiq"] }, 
+                        hospitals: { bn: ["গাইবান্ধা জেলা হাসপাতাল"], en: ["Gaibandha District Hospital"] }, 
+                        food: { bn: "গাইবান্ধার রসমঞ্জরী মিষ্টি।", en: "Gaibandha's Roshomonjori Sweet." } 
+                    },
+                    "lalmonirhat": { 
+                        name: { bn: "লালমনিরহাট", en: "Lalmonirhat" }, 
+                        upazilas: { bn: ["লালমনিরহাট সদর", "মহেন্দ্রনগর", "আদিতমারী", "কালীগঞ্জ", "হাতীবান্ধা", "পাটগ্রাম"], en: ["Lalmonirhat Sadar", "Mahendranagar", "Aditmari", "Kaliganj", "Hatibandha", "Patgram"] }, 
+                        spots: { bn: ["তিস্তা ব্যারাজ"], en: ["Teesta Barrage"] }, 
+                        people: { bn: ["শেখ ফজলল করীম"], en: ["Sherikh Fazlal Karim"] }, 
+                        hospitals: { bn: ["লালমনিরহাট সদর হাসপাতাল"], en: ["Lalmonirhat Sadar Hospital"] }, 
+                        food: { bn: "তামাক এবং ভুট্টা।", en: "Tobacco and Corn." } 
+                    },
+                    "nilphamari": { 
+                        name: { bn: "নীলফামারী", en: "Nilphamari" }, 
+                        upazilas: { bn: ["নীলফামারী সদর", "সৈয়দপুর", "ডোমার", "ডিমলা", "জলঢাকা", "কিশোরগঞ্জ"], en: ["Nilphamari Sadar", "Sayedpur", "Domar", "Dimla", "Jaldhaka", "Kishoreganj"] }, 
+                        spots: { bn: ["নীলসাগর"], en: ["Nilsagor"] }, 
+                        people: { bn: ["আসাদুজ্জামান নূর"], en: ["Asaduজ্জামান Noor"] }, 
+                        hospitals: { bn: ["নীলফামারী জেলা হাসপাতাল"], en: ["Nilphamari District Hospital"] }, 
+                        food: { bn: "ডোমারর বাঁশের তৈরি শিল্প।", en: "Domar's Bamboo Handicrafts." } 
+                    },
+                    "panchagarh": { 
+                        name: { bn: "পঞ্চগড়", en: "Panchagarh" }, 
+                        upazilas: { bn: ["পঞ্চগড় সদর", "তেঁতুলিয়া", "বোদা", "দেবীগঞ্জ", "আটোয়ারী"], en: ["Panchagarh Sadar", "Tetulia", "Boda", "Debiganj", "Atwari"] }, 
+                        spots: { bn: ["তেঁতুলিয়া ডাকবাংলো", "সমতল ভূমির চা বাগান"], en: ["Tetulia Dak Bungalow", "Flat Terrain Tea Gardens"] }, 
+                        people: { bn: ["শরিফুল ইসলাম"], en: ["Shariful Islam"] }, 
+                        hospitals: { bn: ["পঞ্চগড় আধুনিক হাসপাতাল"], en: ["Panchagarh Modern Hospital"] }, 
+                        food: { bn: "অর্গানিক গ্রিন টি।", en: "Organic Green Tea." } 
+                    },
+                    "thakurgaon": { 
+                        name: { bn: "ঠাকুরগাঁও", en: "Thakurgaon" }, 
+                        upazilas: { bn: ["ঠাকুরগাঁও সদর", "পীরগঞ্জ", "বালিয়াডাঙ্গী", "রাণীশংকৈল", "হরিপুর"], en: ["Thakurgaon Sadar", "Pirganj", "Baliadangi", "Ranishankail", "Haripur"] }, 
+                        spots: { bn: ["বালিয়াডাঙ্গী সূর্যপুরী আমগাছ"], en: ["Baliadangi Suryapuri Mango Tree"] }, 
+                        people: { bn: ["মির্জা ফখরুল ইসলাম আলমগীর"], en: ["Mirza Fakhrul Islam Alamgir"] }, 
+                        hospitals: { bn: ["ঠাকুরগাঁও আধুনিক হাসপাতাল"], en: ["Thakurgaon Modern Hospital"] }, 
+                        food: { bn: "সূর্যপুরী আম।", en: "Suryapuri Mango." } 
+                    }
                 }
             },
             "mymensingh": {
-                name: "ময়মনসিংহ",
+                name: { bn: "ময়মনসিংহ", en: "Mymensingh" },
                 districts: {
-                    "mym_d": { name: "ময়মনসিংহ", upazilas: ["ময়মনসিংহ সদর", "মুক্তাগাছা", "ফুলবাড়ীয়া", "ত্রিশাল", "ভালুকা", "গফরগাঁও", "নন্দাইল", "ঈশ্বরগঞ্জ", "গৌরীপুর", "হালুয়াঘাট", "ধোবাউড়া", "ফুলপুর", "তারাকান্দা"], spots: ["শশী লজ", "মুক্তাগাছা জমিদার বাড়ি"], people: ["শিল্পাচার্য জয়নুল আবেদিন"], hospitals: ["ময়মনসিংহ মেডিকেল কলেজ"], food: "মুক্তাগাছার মণ্ডা।" },
-                    "jamalpur": { name: "জামালপুর", upazilas: ["জামালপুর সদর", "মেলান্দহ", "ইসলামপুর", "দেওয়ানগঞ্জ", "مাদারগঞ্জ", "সরিষাবাড়ী", "বকশীগঞ্জ"], spots: ["লাউচাপড়া পর্যটন কেন্দ্র"], people: ["খালেদ মোশাররফ (বীর উত্তম)"], hospitals: ["শেখ হাসিনা মেডিকেল, জামালপুর"], food: "হস্তশিল্পের নকশিকাঁথা ও ছানার পোলাও।" },
-                    "netrokona": { name: "নেত্রকোণা", upazilas: ["নেত্রকোণা সদর", "বারহাট্টা", "কলমাকান্দা", "দুর্গাপুর", "পূর্বধলা", "কেন্দুয়া", "মদন", "খালিয়াজুড়ী"], spots: ["দুর্গাপুরের সাদামাটি পাহাড়"], people: ["হুমায়ূন আহমেদ", "নির্মলেন্দু গুণ"], hospitals: ["নেত্রকোণা আধুনিক হাসপাতাল"], food: "বালিশ মিষ্টি।" },
-                    "sherpur": { name: "শেরপুর", upazilas: ["শেরপুর সদর", "নালিতাবাড়ী", "ঝিনাইগাতী", "নকলা", "শ্রীবরদী"], spots: ["গাজনী অবকাশ কেন্দ্র", "মধুটিলা ইকোপার্ক"], people: ["রবীন্দ্র নাথ ত্রিবেদী"], hospitals: ["শেরপুর জেলা হাসপাতাল"], food: "ছানার পায়েস এবং তুলসীমালা চাল।" }
+                    "mym_d": { 
+                        name: { bn: "ময়মনসিংহ", en: "Mymensingh" }, 
+                        upazilas: { bn: ["ময়মনসিংহ সদর", "মুক্তাগাছা", "ফুলবাড়ীয়া", "ত্রিশাল", "ভালুকা", "গফরগাঁও", "নন্দাইল", "ঈশ্বরগঞ্জ", "গৌরীপুর", "হালুয়াঘাট", "ধোবাউড়া", "ফুলপুর", "তারাকান্দা"], en: ["Mymensingh Sadar", "Muktagachha", "Fulbaria", "Trishal", "Valuka", "Gafargaon", "Nandail", "Ishwarganj", "Gouripur", "Haluaghat", "Dhobaura", "Phulpur", "Tarakanda"] }, 
+                        spots: { bn: ["শশী লজ", "মুক্তাগাছা জমিদার বাড়ি"], en: ["Shashi Lodge", "Muktagachha Zamindar Bari"] }, 
+                        people: { bn: ["শিল্পাচার্য জয়নুল আবেদিন"], en: ["Shilpacharya Zainul Abedin"] }, 
+                        hospitals: { bn: ["ময়মনসিংহ মেডিকেল কলেজ"], en: ["Mymensingh Medical College"] }, 
+                        food: { bn: "মুক্তাগাছার মণ্ডা।", en: "Muktagachha's Monda Sweet." } 
+                    },
+                    "jamalpur": { 
+                        name: { bn: "জামালপুর", en: "Jamalpur" }, 
+                        upazilas: { bn: ["জামালপুর সদর", "মেলান্দহ", "ইসলামপুর", "দেওয়ানগঞ্জ", "মাদারগঞ্জ", "সরিষাবাড়ী", "বকশীগঞ্জ"], en: ["Jamalpur Sadar", "Melandaha", "Islampur", "Dewanganj", "Madarganj", "Sarishabari", "Bakshiganj"] }, 
+                        spots: { bn: ["লাউচাপড়া পর্যটন কেন্দ্র"], en: ["Lauchapra Tourism Center"] }, 
+                        people: { bn: ["খালেদ মোশাররফ (বীর উত্তম)"], en: ["Khaled Mosharraf (Bir Uttam)"] }, 
+                        hospitals: { bn: ["শেখ হাসিনা মেডিকেল, জামালপুর"], en: ["Sheikh Hasina Medical College, Jamalpur"] }, 
+                        food: { bn: "হস্তশিল্পের নকশিকাঁথা ও ছানার পোলাও।", en: "Handicraft Nakshikantha and Chanar Polao." } 
+                    },
+                    "netrokona": { 
+                        name: { bn: "নেত্রকোণা", en: "Netrokona" }, 
+                        upazilas: { bn: ["নেত্রকোণা সদর", "বারহাট্টা", "কলমাকান্দা", "দুর্গাপুর", "পূর্বধলা", "কেন্দুয়া", "মদন", "খালিয়াজুড়ী"], en: ["Netrokona Sadar", "Barhatta", "Kalmakanda", "Durgapur", "Purbadhala", "Kendua", "Madan", "Khaliajuri"] }, 
+                        spots: { bn: ["দুর্গাপুরের সাদামাটি পাহাড়"], en: ["White Clay Hills of Durgapur"] }, 
+                        people: { bn: ["হুমায়ূন আহমেদ", "নির্মলেন্দু গুণ"], en: ["Humayun Ahmed", "Nirmalendu Goon"] }, 
+                        hospitals: { bn: ["নেত্রকোণা আধুনিক হাসপাতাল"], en: ["Netrokona Modern Hospital"] }, 
+                        food: { bn: "বালিশ মিষ্টি।", en: "Balish Sweet." } 
+                    },
+                    "sherpur": { 
+                        name: { bn: "শেরপুর", en: "Sherpur" }, 
+                        upazilas: { bn: ["শেরপুর সদর", "নালিতাবাড়ী", "ঝিনাইগাতী", "নকলা", "শ্রীবরদী"], en: ["Sherpur Sadar", "Nalitabari", "Jhenaigati", "Nakla", "Sreebardi"] }, 
+                        spots: { bn: ["গাজনী অবকাশ কেন্দ্র", "مधুটিলা ইকোপার্ক"], en: ["Gajni Obokash Center", "Modhutila Eco Park"] }, 
+                        people: { bn: ["রবীন্দ্র নাথ ত্রিবেদী"], en: ["Rabindranath Trivedi"] }, 
+                        hospitals: { bn: ["শেরপুর জেলা হাসপাতাল"], en: ["Sherpur District Hospital"] }, 
+                        food: { bn: "ছানার পায়েস এবং তুলসীমালা চাল।", en: "Chanar Payesh and Tulshimala Rice." } 
+                    }
                 }
             }
         };
@@ -399,46 +958,47 @@
         const infoDashboard = document.getElementById('infoDashboard');
         const placeholderText = document.getElementById('placeholderText');
 
-        // Render Divisions Options
-        for (let key in bdData) {
-            let opt = document.createElement('option');
-            opt.value = key;
-            opt.innerHTML = bdData[key].name + " বিভাগ";
-            divisionSelect.appendChild(opt);
+        // Helper function to dynamically adjust select states
+        function updateSelectStyle(element, isDisabled) {
+            const set = uiText[currentLang];
+            if(isDisabled) {
+                element.disabled = true;
+                element.className = "w-full bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/50 rounded-xl px-4 py-3 text-slate-400 focus:outline-none focus:border-emerald-500 transition-all cursor-not-allowed";
+            } else {
+                element.disabled = false;
+                element.className = "w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-emerald-500 transition-all cursor-pointer shadow-sm dark:shadow-none";
+            }
         }
 
         // Division Selection Trigger
         divisionSelect.addEventListener('change', function() {
-            districtSelect.innerHTML = '<option value="">-- জেলা বেছে নিন --</option>';
-            upazilaSelect.innerHTML = '<option value="">-- প্রথমে জেলা সিলেক্ট করুন --</option>';
+            const set = uiText[currentLang];
+            districtSelect.innerHTML = `<option value="">${set.optDistActive}</option>`;
+            upazilaSelect.innerHTML = `<option value="">${set.optUpzDef}</option>`;
             updateSelectStyle(upazilaSelect, true);
             infoDashboard.classList.add('hidden');
             placeholderText.classList.remove('hidden');
 
             if(this.value) {
                 updateSelectStyle(districtSelect, false);
-                
                 let districts = bdData[this.value].districts;
                 for(let distKey in districts) {
                     let opt = document.createElement('option');
                     opt.value = distKey;
-                    opt.innerHTML = districts[distKey].name + " জেলা";
+                    opt.innerHTML = districts[distKey].name[currentLang] + " " + (currentLang === 'bn' ? 'জেলা' : 'District');
                     districtSelect.appendChild(opt);
                 }
             } else {
+                districtSelect.innerHTML = `<option value="">${set.optDistDef}</option>`;
                 updateSelectStyle(districtSelect, true);
             }
         });
 
         // District Selection Trigger
         districtSelect.addEventListener('change', function() {
-            upazilaSelect.innerHTML = '<option value="">-- নির্দিষ্ট উপজেলা দেখুন --</option>';
-            
             if(this.value) {
                 updateSelectStyle(upazilaSelect, false);
-                triggerBadgeColorRefresh();
-
-                // Open Dashboard View
+                triggerDataViewRefresh();
                 placeholderText.classList.add('hidden');
                 infoDashboard.classList.remove('hidden');
             } else {
@@ -448,19 +1008,18 @@
             }
         });
 
-        // Re-useable engine function to build dynamic data panel and check theme compliance
-        function triggerBadgeColorRefresh() {
+        // Data Rendering Pipeline Engine
+        function triggerDataViewRefresh() {
             let currentDiv = divisionSelect.value;
             let currentDist = districtSelect.value;
             if(!currentDiv || !currentDist) return;
 
             let districtInfo = bdData[currentDiv].districts[currentDist];
+            const set = uiText[currentLang];
 
-            // Clean up list elements
-            upazilaSelect.innerHTML = '<option value="">-- নির্দিষ্ট উপজেলা দেখুন --</option>';
-
-            // Render Upazilas to Dropdown
-            districtInfo.upazilas.forEach(upazila => {
+            // Render Upazilas to Selector Dropdown
+            upazilaSelect.innerHTML = `<option value="">${set.optUpzActive}</option>`;
+            districtInfo.upazilas[currentLang].forEach(upazila => {
                 let opt = document.createElement('option');
                 opt.innerHTML = upazila;
                 upazilaSelect.appendChild(opt);
@@ -468,35 +1027,35 @@
 
             // Render Upazilas as Premium Dynamic Badges
             let badgesHtml = "";
-            districtInfo.upazilas.forEach(upazila => {
-                // Tailwind classes responsive to light/dark themes natively
+            districtInfo.upazilas[currentLang].forEach(upazila => {
                 badgesHtml += `<span class="bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/60 px-3 py-1.5 rounded-lg text-emerald-700 dark:text-emerald-400 text-xs font-semibold shadow-sm transition-colors duration-300"><i class="fa-solid fa-location-dot text-[10px] mr-1 text-slate-400 dark:text-slate-500"></i>${upazila}</span>`;
             });
             document.getElementById('allUpazilasBadgeContainer').innerHTML = badgesHtml;
 
-            // Update Text Nodes
-            document.getElementById('displayTitle').innerHTML = districtInfo.name + " জেলা";
-            document.getElementById('displayDivision').innerHTML = bdData[currentDiv].name;
-            document.getElementById('displayUpazilaCount').innerHTML = districtInfo.upazilas.length;
+            // Update Header & Layout Meta Titles
+            document.getElementById('displayTitle').innerHTML = districtInfo.name[currentLang] + " " + set.suffixDist;
+            document.getElementById('displayDivision').innerHTML = bdData[currentDiv].name[currentLang];
+            document.getElementById('displayUpazilaCount').innerHTML = districtInfo.upazilas[currentLang].length;
 
-            // Update Tourist Spots
+            // Render Lists Safely with Multilingual Fallbacks
             let spotsHtml = "";
-            districtInfo.spots.forEach(spot => { spotsHtml += `<li>${spot}</li>`; });
-            document.getElementById('spotsList').innerHTML = spotsHtml || "<li>তথ্য আপলোড করা হচ্ছে...</li>";
+            districtInfo.spots[currentLang].forEach(spot => { spotsHtml += `<li>${spot}</li>`; });
+            document.getElementById('spotsList').innerHTML = spotsHtml || set.spotsFallback;
 
-            // Update People
             let peopleHtml = "";
-            districtInfo.people.forEach(person => { peopleHtml += `<li>${person}</li>`; });
-            document.getElementById('peopleList').innerHTML = peopleHtml || "<li>তথ্য আপলোড করা হচ্ছে...</li>";
+            districtInfo.people[currentLang].forEach(person => { peopleHtml += `<li>${person}</li>`; });
+            document.getElementById('peopleList').innerHTML = peopleHtml || set.peopleFallback;
 
-            // Update Hospitals
             let hospitalHtml = "";
-            districtInfo.hospitals.forEach(hosp => { hospitalHtml += `<li>${hosp}</li>`; });
-            document.getElementById('hospitalsList').innerHTML = hospitalHtml || "<li>তথ্য আপলোড করা হচ্ছে...</li>";
+            districtInfo.hospitals[currentLang].forEach(hosp => { hospitalHtml += `<li>${hosp}</li>`; });
+            document.getElementById('hospitalsList').innerHTML = hospitalHtml || set.hospFallback;
 
-            // Update Food
-            document.getElementById('foodText').innerHTML = districtInfo.food;
+            // Render Foods
+            document.getElementById('foodText').innerHTML = districtInfo.food[currentLang];
         }
+
+        // Run Language Initialization Setup once on document body load
+        applyLanguageSettings();
     </script>
 </body>
 </html>
